@@ -1,3 +1,75 @@
 [gd_scene format=3 uid="uid://5pqjsl2cgjk1"]
 
-[node name="main" type="Node2D" unique_id=481138762]
+[ext_resource type="Texture2D" uid="uid://cja5xsvw1wy07" path="res://assets/main/bg_main.png" id="1_sugp2"]
+[ext_resource type="Texture2D" uid="uid://cshx4ixulutdr" path="res://assets/main/bg_stove.png" id="2_jyhfs"]
+[ext_resource type="Texture2D" uid="uid://bfswkujwckn50" path="res://assets/main/bg_cutting_board.png" id="3_tbgi4"]
+[ext_resource type="Texture2D" uid="uid://75sn6x0tsrmo" path="res://assets/main/main_stove_top.png" id="4_tbgi4"]
+[ext_resource type="Texture2D" uid="uid://dpydea0favxsp" path="res://assets/main/bg_cutting_board_selected.png" id="4_tefeu"]
+[ext_resource type="Texture2D" uid="uid://b0ecbaw73qqwe" path="res://assets/main/main_stove_top_selected.png" id="5_tefeu"]
+
+[node name="main" type="Control" unique_id=388590618]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="bg" type="TextureRect" parent="." unique_id=243927093]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_sugp2")
+
+[node name="stove" type="TextureButton" parent="." unique_id=1852534774]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -600.0
+offset_top = -290.0
+grow_horizontal = 0
+grow_vertical = 0
+texture_normal = ExtResource("2_jyhfs")
+
+[node name="cutting board" type="TextureButton" parent="." unique_id=1978233640]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 42.0
+offset_top = -272.0
+offset_right = 492.0
+offset_bottom = -52.0
+grow_vertical = 0
+focus_neighbor_right = NodePath("../stovetop1")
+texture_normal = ExtResource("3_tbgi4")
+texture_focused = ExtResource("4_tefeu")
+
+[node name="stovetop1" type="TextureButton" parent="." unique_id=722706259]
+layout_mode = 0
+anchor_left = 0.5572917
+anchor_top = 0.59876543
+anchor_right = 0.8012153
+anchor_bottom = 0.8919753
+focus_neighbor_left = NodePath("../cutting board")
+focus_neighbor_right = NodePath("../stovetop2")
+texture_normal = ExtResource("4_tbgi4")
+texture_focused = ExtResource("5_tefeu")
+metadata/_edit_use_anchors_ = true
+
+[node name="stovetop2" type="TextureButton" parent="." unique_id=1289126386]
+layout_mode = 0
+anchor_left = 0.8229167
+anchor_top = 0.59876543
+anchor_right = 1.0668403
+anchor_bottom = 0.8919753
+focus_neighbor_left = NodePath("../stovetop1")
+texture_normal = ExtResource("4_tbgi4")
+texture_focused = ExtResource("5_tefeu")
+metadata/_edit_use_anchors_ = true
