@@ -1,19 +1,40 @@
 [gd_scene format=3 uid="uid://5pqjsl2cgjk1"]
 
+[ext_resource type="Script" uid="uid://dsawaprrp8xpk" path="res://scripts/main.gd" id="1_o6xl0"]
 [ext_resource type="Texture2D" uid="uid://cja5xsvw1wy07" path="res://assets/main/bg_main.png" id="1_sugp2"]
 [ext_resource type="Texture2D" uid="uid://cshx4ixulutdr" path="res://assets/main/bg_stove.png" id="2_jyhfs"]
 [ext_resource type="Texture2D" uid="uid://bfswkujwckn50" path="res://assets/main/bg_cutting_board.png" id="3_tbgi4"]
 [ext_resource type="Texture2D" uid="uid://75sn6x0tsrmo" path="res://assets/main/main_stove_top.png" id="4_tbgi4"]
 [ext_resource type="Texture2D" uid="uid://dpydea0favxsp" path="res://assets/main/bg_cutting_board_selected.png" id="4_tefeu"]
 [ext_resource type="Texture2D" uid="uid://b0ecbaw73qqwe" path="res://assets/main/main_stove_top_selected.png" id="5_tefeu"]
+[ext_resource type="Texture2D" uid="uid://yp8gk6ig446b" path="res://assets/main/choice_container.png" id="8_choun"]
+[ext_resource type="Texture2D" uid="uid://dg7e52ri4lkgo" path="res://assets/main/stove_choices_pot.png" id="9_ya4ey"]
+[ext_resource type="Texture2D" uid="uid://borvliyd6g6le" path="res://assets/main/stove_choices_pan.png" id="10_eb6dy"]
+[ext_resource type="Texture2D" uid="uid://ctldyco6o3m52" path="res://assets/main/stove_choices_pot_selected.png" id="10_trceg"]
+[ext_resource type="Texture2D" uid="uid://bgjfmfjnao5sl" path="res://assets/main/stove_choices_pan_selected.png" id="12_a8y0u"]
+[ext_resource type="Texture2D" uid="uid://dpc7jxfw0m8jf" path="res://assets/main/potonstove.png" id="13_a8y0u"]
+[ext_resource type="Texture2D" uid="uid://cbqg14woe3uy0" path="res://assets/main/panonstove.png" id="14_jkv2x"]
 
-[node name="main" type="Control" unique_id=388590618]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o6xl0"]
+
+[node name="main" type="Control" unique_id=388590618 node_paths=PackedStringArray("pot_pan_choice", "pot_choice", "pan_choice", "stove1", "stove2", "pot_on_stove1", "pan_on_stove1", "pot_on_stove2", "pan_on_stove2")]
+texture_filter = 1
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_o6xl0")
+pot_pan_choice = NodePath("potpanchoicelayer/potpanchoice1")
+pot_choice = NodePath("potpanchoicelayer/potpanchoice1/potchoice")
+pan_choice = NodePath("potpanchoicelayer/potpanchoice1/panchoice")
+stove1 = NodePath("stovetop1")
+stove2 = NodePath("stovetop2")
+pot_on_stove1 = NodePath("pot_pan_collection/pot_on_stove1")
+pan_on_stove1 = NodePath("pot_pan_collection/pan_on_stove1")
+pot_on_stove2 = NodePath("pot_pan_collection/pot_on_stove2")
+pan_on_stove2 = NodePath("pot_pan_collection/pan_on_stove2")
 
 [node name="bg" type="TextureRect" parent="." unique_id=243927093]
 layout_mode = 1
@@ -24,7 +45,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_sugp2")
 
-[node name="stove" type="TextureButton" parent="." unique_id=1852534774]
+[node name="stove" type="TextureRect" parent="." unique_id=134017416]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -35,7 +56,7 @@ offset_left = -600.0
 offset_top = -290.0
 grow_horizontal = 0
 grow_vertical = 0
-texture_normal = ExtResource("2_jyhfs")
+texture = ExtResource("2_jyhfs")
 
 [node name="cutting board" type="TextureButton" parent="." unique_id=1978233640]
 layout_mode = 1
@@ -43,9 +64,9 @@ anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
 offset_left = 42.0
-offset_top = -272.0
+offset_top = -283.0
 offset_right = 492.0
-offset_bottom = -52.0
+offset_bottom = -63.0
 grow_vertical = 0
 focus_neighbor_right = NodePath("../stovetop1")
 texture_normal = ExtResource("3_tbgi4")
@@ -58,7 +79,9 @@ anchor_top = 0.59876543
 anchor_right = 0.8012153
 anchor_bottom = 0.8919753
 focus_neighbor_left = NodePath("../cutting board")
+focus_neighbor_top = NodePath(".")
 focus_neighbor_right = NodePath("../stovetop2")
+focus_neighbor_bottom = NodePath(".")
 texture_normal = ExtResource("4_tbgi4")
 texture_focused = ExtResource("5_tefeu")
 metadata/_edit_use_anchors_ = true
@@ -70,6 +93,112 @@ anchor_top = 0.59876543
 anchor_right = 1.0668403
 anchor_bottom = 0.8919753
 focus_neighbor_left = NodePath("../stovetop1")
+focus_neighbor_top = NodePath(".")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath(".")
 texture_normal = ExtResource("4_tbgi4")
 texture_focused = ExtResource("5_tefeu")
 metadata/_edit_use_anchors_ = true
+
+[node name="pot_pan_collection" type="Node" parent="." unique_id=1415186210]
+
+[node name="pot_on_stove1" type="TextureRect" parent="pot_pan_collection" unique_id=782239370]
+visible = false
+offset_left = 667.0
+offset_top = 284.0
+offset_right = 892.0
+offset_bottom = 529.0
+texture = ExtResource("13_a8y0u")
+
+[node name="pan_on_stove1" type="TextureRect" parent="pot_pan_collection" unique_id=1732259618]
+visible = false
+offset_left = 638.0
+offset_top = 377.0
+offset_right = 938.0
+offset_bottom = 537.0
+texture = ExtResource("14_jkv2x")
+
+[node name="pot_on_stove2" type="TextureRect" parent="pot_pan_collection" unique_id=1075463049]
+visible = false
+offset_left = 983.0
+offset_top = 278.0
+offset_right = 1208.0
+offset_bottom = 523.0
+texture = ExtResource("13_a8y0u")
+
+[node name="pan_on_stove2" type="TextureRect" parent="pot_pan_collection" unique_id=397988187]
+visible = false
+offset_left = 951.0
+offset_top = 380.0
+offset_right = 1251.0
+offset_bottom = 540.0
+texture = ExtResource("14_jkv2x")
+
+[node name="potpanchoicelayer" type="CanvasLayer" parent="." unique_id=1672796403]
+
+[node name="potpanchoice1" type="Panel" parent="potpanchoicelayer" unique_id=457305900]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -95.5
+offset_right = -86.0
+offset_bottom = -32.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3, 3)
+theme_override_styles/panel = SubResource("StyleBoxEmpty_o6xl0")
+
+[node name="container texture" type="TextureRect" parent="potpanchoicelayer/potpanchoice1" unique_id=972374275]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -82.0
+offset_top = -32.0
+offset_right = 82.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_choun")
+
+[node name="potchoice" type="TextureButton" parent="potpanchoicelayer/potpanchoice1" unique_id=268031417]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05487805
+anchor_top = 0.031746034
+anchor_right = 0.4817073
+anchor_bottom = 0.984127
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath(".")
+focus_neighbor_right = NodePath("../panchoice")
+focus_neighbor_bottom = NodePath(".")
+texture_normal = ExtResource("9_ya4ey")
+texture_focused = ExtResource("10_trceg")
+metadata/_edit_use_anchors_ = true
+
+[node name="panchoice" type="TextureButton" parent="potpanchoicelayer/potpanchoice1" unique_id=1235234352]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5243902
+anchor_top = 0.031746034
+anchor_right = 0.9512195
+anchor_bottom = 0.984127
+grow_horizontal = 0
+focus_neighbor_left = NodePath("../potchoice")
+focus_neighbor_top = NodePath(".")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath(".")
+texture_normal = ExtResource("10_eb6dy")
+texture_focused = ExtResource("12_a8y0u")
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="stovetop1" to="." method="_on_stovetop_pressed" binds= [true]]
+[connection signal="pressed" from="stovetop2" to="." method="_on_stovetop_pressed" binds= [false]]
+[connection signal="pressed" from="potpanchoicelayer/potpanchoice1/potchoice" to="." method="_on_potchoice_pressed"]
+[connection signal="pressed" from="potpanchoicelayer/potpanchoice1/panchoice" to="." method="_on_panchoice_pressed"]
