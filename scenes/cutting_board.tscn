@@ -1,9 +1,267 @@
 [gd_scene format=3 uid="uid://cvjdpf4tf205y"]
 
-[node name="cutting_board" type="Control" unique_id=772966986]
+[ext_resource type="Script" uid="uid://cysj8whab6evp" path="res://scripts/cutting_board.gd" id="1_7p0ku"]
+[ext_resource type="Texture2D" uid="uid://b7pdp7ns38dt3" path="res://assets/cutting/cuttingboard.png" id="1_m4ftk"]
+[ext_resource type="PackedScene" uid="uid://cxiqxkk6wba51" path="res://scenes/carrot.tscn" id="2_oihve"]
+[ext_resource type="Texture2D" uid="uid://clukjfi52itf6" path="res://assets/cutting/knife.png" id="3_j4crm"]
+
+[sub_resource type="Animation" id="Animation_j4crm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("knife:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(633, 109)]
+}
+
+[sub_resource type="Animation" id="Animation_7p0ku"]
+resource_name = "Slice1"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("knife:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(633, 109), Vector2(633, 158)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("carrot")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.15),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"slice1"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_oj4ry"]
+resource_name = "Slice2"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("knife:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(689, 109), Vector2(689, 158)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("carrot")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.15),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"slice2"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_dsgkq"]
+resource_name = "Slice3"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("knife:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(741, 109), Vector2(741, 158)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("carrot")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.15),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"slice3"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_tpo5p"]
+resource_name = "Slice4"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("knife:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(799, 109), Vector2(799, 158)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("carrot")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.15),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"slice4"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_mwv5v"]
+resource_name = "Slice5"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("knife:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(853, 109), Vector2(853, 158)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("carrot")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.15),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"slice5"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_f823b"]
+resource_name = "Slice6"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("knife:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(910, 109), Vector2(910, 158)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("carrot")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.15),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"slice6"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_eaa65"]
+resource_name = "remove_carrot"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("knife:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(950, 109), Vector2(566, 109)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("carrot")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"remove"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_oj4ry"]
+_data = {
+&"RESET": SubResource("Animation_j4crm"),
+&"Slice1": SubResource("Animation_7p0ku"),
+&"Slice2": SubResource("Animation_oj4ry"),
+&"Slice3": SubResource("Animation_dsgkq"),
+&"Slice4": SubResource("Animation_tpo5p"),
+&"Slice5": SubResource("Animation_mwv5v"),
+&"Slice6": SubResource("Animation_f823b"),
+&"remove_carrot": SubResource("Animation_eaa65")
+}
+
+[node name="cutting_board" type="Control" unique_id=772966986 node_paths=PackedStringArray("anim")]
+texture_filter = 1
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_7p0ku")
+anim = NodePath("AnimationPlayer")
+
+[node name="bg" type="TextureRect" parent="." unique_id=1289708127]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_m4ftk")
+
+[node name="carrot" parent="." unique_id=1220712028 instance=ExtResource("2_oihve")]
+position = Vector2(790, 324)
+
+[node name="knife" type="TextureRect" parent="." unique_id=817819869]
+layout_mode = 0
+offset_left = 633.0
+offset_top = 109.0
+offset_right = 673.0
+offset_bottom = 509.00037
+texture = ExtResource("3_j4crm")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1175694663]
+libraries/ = SubResource("AnimationLibrary_oj4ry")
