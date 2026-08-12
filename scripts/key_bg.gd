@@ -16,5 +16,4 @@ func set_label(label_text: String):
 	else:
 		label.add_theme_font_size_override("font_size", 120)
 	label.text = label_text
-	print("looks" + label.text)
 	label.show()

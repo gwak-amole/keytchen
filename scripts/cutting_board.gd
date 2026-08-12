@@ -3,11 +3,19 @@ extends Control
 @export var anim: AnimationPlayer
 @export var music: AudioStreamPlayer
 
-# regular pattern
-var pattern = [0, 60, 62, 64, 65, 64, 62]
+# patterns + initialization
+var pattern: Array[int] = []
+var carrot_pattern: Array[int] = [0, 60, 62, 64, 65, 64, 62]
+var zucchini_pattern: Array[int] = [0, 60, 64, 60, 64, 60, 64]
+
+# set counter for which slice
 var counter = 1;
+
+# veggie selection
 var current_veggies: Array[String] = ["carrot", "potato", "zucchini"]
 var current_veggie: String
+
+# music timing
 var beat_length = 0.5
 var nearest_beat_time = 0.0
 var nearest_beat_number = 0
@@ -23,8 +31,30 @@ var time_allowed_between = 0.5
 var elapsed_time = 0.0
 var bypass_wipe = false
 
+# mode set
+var potato_mode = false
+var potato_smash: Array[int] = [60, 64]
+var potato_smash2: Array[int] = [64, 60]
+
+func reset():
+	current_veggie = current_veggies.pick_random()
+	if current_veggie == "carrot":
+		print("carrot")
+		pattern = carrot_pattern
+		time_allowed_between = 0.5
+	elif current_veggie == "zucchini":
+		print("zucchini")
+		pattern = zucchini_pattern
+		time_allowed_between = 0.5
+	elif current_veggie == "potato":
+		print("potato")
+		potato_mode = true
+		pattern = potato_smash
+		time_allowed_between = 0.05
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	reset()
 	KeyBg.show()
 	current_veggie = "carrot"
 
@@ -33,7 +63,7 @@ func _process(delta: float) -> void:
 	current_time = music.get_playback_position()
 	nearest_beat_number = round(current_time / secs_per_beat)
 	nearest_beat_time = nearest_beat_number * secs_per_beat
-	if counter < 7:
+	if (counter < 7 and !potato_mode) || (counter < 2 and potato_mode):
 		match pattern[counter]:
 			53:
 				current_note = "F"
@@ -54,8 +84,7 @@ func _process(delta: float) -> void:
 	else:
 		current_note = "WIPE"
 	if abs(current_time - nearest_beat_time) < 0.25:
-		print("showing text")
-		print(current_note)
+		# print(current_note)
 		KeyBg.set_label(current_note)
 	if counter >= 7:
 		elapsed_time += delta
@@ -72,7 +101,10 @@ func _input(event):
 			print("received" + str(event.pitch))
 			print(counter)
 			print("elapsed time: " + str(elapsed_time) + " time_allowed " + str(time_allowed_between))
-			if counter >= 7 && elapsed_time < time_allowed_between:
+			if potato_mode:
+				recent_notes.append(event.pitch)
+				
+			elif counter >= 7 && elapsed_time < time_allowed_between:
 				print("checking wipe")
 				print(recent_notes)
 				recent_notes.append(event.pitch)
