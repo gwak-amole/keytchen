@@ -104,6 +104,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="pot_on_stove1" type="TextureRect" parent="pot_pan_collection" unique_id=782239370]
 visible = false
+texture_filter = 1
 offset_left = 667.0
 offset_top = 284.0
 offset_right = 892.0
@@ -112,6 +113,7 @@ texture = ExtResource("13_a8y0u")
 
 [node name="pan_on_stove1" type="TextureRect" parent="pot_pan_collection" unique_id=1732259618]
 visible = false
+texture_filter = 1
 offset_left = 638.0
 offset_top = 377.0
 offset_right = 938.0
@@ -120,6 +122,7 @@ texture = ExtResource("14_jkv2x")
 
 [node name="pot_on_stove2" type="TextureRect" parent="pot_pan_collection" unique_id=1075463049]
 visible = false
+texture_filter = 1
 offset_left = 983.0
 offset_top = 278.0
 offset_right = 1208.0
@@ -128,6 +131,7 @@ texture = ExtResource("13_a8y0u")
 
 [node name="pan_on_stove2" type="TextureRect" parent="pot_pan_collection" unique_id=397988187]
 visible = false
+texture_filter = 1
 offset_left = 951.0
 offset_top = 380.0
 offset_right = 1251.0
@@ -138,6 +142,7 @@ texture = ExtResource("14_jkv2x")
 
 [node name="potpanchoice1" type="Panel" parent="potpanchoicelayer" unique_id=457305900]
 visible = false
+texture_filter = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5

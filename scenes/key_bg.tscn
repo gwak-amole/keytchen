@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://i4b3uvpifkjt"]
+
+[ext_resource type="Script" uid="uid://datlm3eevp81v" path="res://scripts/key_bg.gd" id="1_ki2qr"]
+[ext_resource type="Texture2D" uid="uid://bgyoqnno8ha7a" path="res://assets/key_guide/key_background.png" id="1_wkrdr"]
+[ext_resource type="FontFile" uid="uid://cbihm5r4u0uc7" path="res://fonts/Press_Start_2P/PressStart2P-Regular.ttf" id="2_254qn"]
+
+[node name="key_bg" type="CanvasLayer" unique_id=965582036 node_paths=PackedStringArray("label")]
+script = ExtResource("1_ki2qr")
+label = NodePath("Panel/Label")
+
+[node name="Panel" type="Panel" parent="." unique_id=370610623]
+offset_left = 10.0
+offset_right = 290.0
+offset_bottom = 648.0
+
+[node name="bg" type="TextureRect" parent="Panel" unique_id=1971537197]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -140.0
+offset_top = -324.0
+offset_right = 140.0
+offset_bottom = 324.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_wkrdr")
+
+[node name="Label" type="Label" parent="Panel" unique_id=402404753]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.2857143
+anchor_top = 0.35802466
+anchor_right = 0.71428573
+anchor_bottom = 0.5432099
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_254qn")
+theme_override_font_sizes/font_size = 120
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true

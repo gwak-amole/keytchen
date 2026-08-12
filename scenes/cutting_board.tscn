@@ -4,6 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://b7pdp7ns38dt3" path="res://assets/cutting/cuttingboard.png" id="1_m4ftk"]
 [ext_resource type="PackedScene" uid="uid://cxiqxkk6wba51" path="res://scenes/carrot.tscn" id="2_oihve"]
 [ext_resource type="Texture2D" uid="uid://clukjfi52itf6" path="res://assets/cutting/knife.png" id="3_j4crm"]
+[ext_resource type="AudioStream" uid="uid://faxc2iw6tn6w" path="res://audio/bg_music_hello.wav" id="5_oj4ry"]
+[ext_resource type="PackedScene" uid="uid://i4b3uvpifkjt" path="res://scenes/key_bg.tscn" id="6_dsgkq"]
 
 [sub_resource type="Animation" id="Animation_j4crm"]
 length = 0.001
@@ -235,7 +237,7 @@ _data = {
 &"remove_carrot": SubResource("Animation_eaa65")
 }
 
-[node name="cutting_board" type="Control" unique_id=772966986 node_paths=PackedStringArray("anim")]
+[node name="cutting_board" type="Control" unique_id=772966986 node_paths=PackedStringArray("anim", "music")]
 texture_filter = 1
 layout_mode = 3
 anchors_preset = 15
@@ -245,6 +247,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_7p0ku")
 anim = NodePath("AnimationPlayer")
+music = NodePath("AudioStreamPlayer")
 
 [node name="bg" type="TextureRect" parent="." unique_id=1289708127]
 layout_mode = 0
@@ -265,3 +268,9 @@ texture = ExtResource("3_j4crm")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1175694663]
 libraries/ = SubResource("AnimationLibrary_oj4ry")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1943189641]
+stream = ExtResource("5_oj4ry")
+autoplay = true
+
+[node name="key_bg" parent="." unique_id=965582036 instance=ExtResource("6_dsgkq")]
