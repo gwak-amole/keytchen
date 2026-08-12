@@ -5,7 +5,6 @@
 [ext_resource type="PackedScene" uid="uid://cxiqxkk6wba51" path="res://scenes/carrot.tscn" id="2_oihve"]
 [ext_resource type="Texture2D" uid="uid://clukjfi52itf6" path="res://assets/cutting/knife.png" id="3_j4crm"]
 [ext_resource type="AudioStream" uid="uid://faxc2iw6tn6w" path="res://audio/bg_music_hello.wav" id="5_oj4ry"]
-[ext_resource type="PackedScene" uid="uid://i4b3uvpifkjt" path="res://scenes/key_bg.tscn" id="6_dsgkq"]
 
 [sub_resource type="Animation" id="Animation_j4crm"]
 length = 0.001
@@ -272,5 +271,3 @@ libraries/ = SubResource("AnimationLibrary_oj4ry")
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1943189641]
 stream = ExtResource("5_oj4ry")
 autoplay = true
-
-[node name="key_bg" parent="." unique_id=965582036 instance=ExtResource("6_dsgkq")]

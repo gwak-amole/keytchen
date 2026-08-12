@@ -6,6 +6,7 @@ extends Control
 # regular pattern
 var pattern = [0, 60, 62, 64, 65, 64, 62]
 var counter = 1;
+var current_veggies: Array[String] = ["carrot", "potato", "zucchini"]
 var current_veggie: String
 var beat_length = 0.5
 var nearest_beat_time = 0.0
@@ -20,9 +21,11 @@ var recent_notes = []
 var wipe_pattern = [60, 59, 57, 55, 53]
 var time_allowed_between = 0.5
 var elapsed_time = 0.0
+var bypass_wipe = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	KeyBg.show()
 	current_veggie = "carrot"
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -58,6 +61,8 @@ func _process(delta: float) -> void:
 		elapsed_time += delta
 
 func _input(event):
+	if bypass_wipe:
+		wipe()
 	if event is InputEventMIDI:
 		if event.message == MIDI_MESSAGE_NOTE_ON:
 			if elapsed_time > time_allowed_between:
@@ -75,6 +80,11 @@ func _input(event):
 					recent_notes.remove_at(0)
 				if recent_notes == wipe_pattern:
 					wipe()
+	if event.is_action_pressed("ui_accept"):
+		if counter < 7:
+			check_note(pattern[counter])
+		else:
+			bypass_wipe = true
 
 func check_note(pitch: int):
 	print("difference number" + str(current_time - nearest_beat_time))
