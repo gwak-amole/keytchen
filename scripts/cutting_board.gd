@@ -37,7 +37,8 @@ var potato_smash: Array[int] = [60, 64]
 var potato_smash2: Array[int] = [64, 60]
 
 func reset():
-	current_veggie = current_veggies.pick_random()
+	# current_veggie = current_veggies.pick_random()
+	current_veggie = "potato"
 	if current_veggie == "carrot":
 		print("carrot")
 		pattern = carrot_pattern
@@ -50,7 +51,7 @@ func reset():
 		print("potato")
 		potato_mode = true
 		pattern = potato_smash
-		time_allowed_between = 0.05
+		time_allowed_between = 0.5
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -83,9 +84,11 @@ func _process(delta: float) -> void:
 				current_note = "F^"
 	else:
 		current_note = "WIPE"
-	add_beat()
-	if counter >= 7:
-		elapsed_time += delta
+	if potato_mode:
+		add_potato_beat()
+	else:
+		add_beat()
+	elapsed_time += delta
 
 func _input(event):
 	if bypass_wipe:
@@ -93,15 +96,15 @@ func _input(event):
 	if event is InputEventMIDI:
 		if event.message == MIDI_MESSAGE_NOTE_ON:
 			if elapsed_time > time_allowed_between:
+				print("resetting recent notes")
 				recent_notes = []
 			elapsed_time = 0
 			if potato_mode:
 				recent_notes.append(event.pitch)
 				check_potato_smash(recent_notes)
 			elif counter >= 7 && elapsed_time < time_allowed_between:
-				print("checking wipe")
-				print(recent_notes)
 				recent_notes.append(event.pitch)
+				print(recent_notes)
 				if recent_notes.size() > 5:
 					recent_notes.remove_at(0)
 				if recent_notes == wipe_pattern:
@@ -145,9 +148,26 @@ func add_beat():
 		cooldown = true
 		await get_tree().create_timer(0.1).timeout
 		cooldown = false
+
+func add_potato_beat():
+	var time_error = abs(current_time - nearest_beat_time)
+	var cooldown = false
+	if time_error < 0.01 && !cooldown:
+		KeyBg.beat()
+		KeyBg.set_double_label(potato_smash)
+		cooldown = true
+		await get_tree().create_timer(0.1).timeout
+		cooldown = false
 		
 func check_potato_smash(notes: Array):
+	print("checking potato smash")
+	print("second")
+	print(notes)
 	var time_error = abs(current_time - nearest_beat_time)
-	if notes == potato_smash || notes == potato_smash2 && time_error <= error_allowed:
+	if (notes == potato_smash || notes == potato_smash2) && time_error <= error_allowed:
 		print("potato success")
 		success_cut()
+	if counter >= 7:
+		potato_mode = false
+		print("potato mode now false")
+	notes = []

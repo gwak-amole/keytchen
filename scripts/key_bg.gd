@@ -18,7 +18,27 @@ func set_label(label_text: String):
 		label.add_theme_font_size_override("font_size", 120)
 	label.show()
 
-func set_double_label(text1: String, text2: String):
+func set_double_label(notes: Array[int]):
+	var note1 = notes[0]
+	var note2 = notes[1]
+	var text1: String
+	var text2: String
+	match note1:
+		60:
+			text1 = "C"
+		62:
+			text1 = "D"
+		64:
+			text1 = "E"
+	match note2:
+		60:
+			text2 = "C"
+		62:
+			text2 = "D"
+		64:
+			text2 = "E"
+		
+	label.add_theme_font_size_override("font_size", 50)
 	label.text = text1 + " " + text2
 	label.show()
 
