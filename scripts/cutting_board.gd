@@ -37,16 +37,17 @@ var potato_smash: Array[int] = [60, 64]
 var potato_smash2: Array[int] = [64, 60]
 
 func reset():
-	# current_veggie = current_veggies.pick_random()
-	current_veggie = "potato"
+	current_veggie = current_veggies.pick_random()
 	if current_veggie == "carrot":
 		print("carrot")
 		pattern = carrot_pattern
 		time_allowed_between = 0.5
+		potato_mode = false
 	elif current_veggie == "zucchini":
 		print("zucchini")
 		pattern = zucchini_pattern
 		time_allowed_between = 0.5
+		potato_mode = false
 	elif current_veggie == "potato":
 		print("potato")
 		potato_mode = true
