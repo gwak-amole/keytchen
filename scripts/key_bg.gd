@@ -17,3 +17,13 @@ func set_label(label_text: String):
 		label.add_theme_font_size_override("font_size", 120)
 	label.text = label_text
 	label.show()
+
+func set_double_label(text1: String, text2: String):
+	label.text = text1 + " " + text2
+	label.show()
+
+func beat():
+	label.pivot_offset = label.size / 2
+	var tween = create_tween()
+	tween.tween_property(label, "scale", Vector2(1.15, 1.15), 0.05)
+	tween.tween_property(label, "scale", Vector2.ONE, 0.05)

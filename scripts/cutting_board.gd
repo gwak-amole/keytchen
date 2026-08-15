@@ -83,9 +83,7 @@ func _process(delta: float) -> void:
 				current_note = "F^"
 	else:
 		current_note = "WIPE"
-	if abs(current_time - nearest_beat_time) < 0.25:
-		# print(current_note)
-		KeyBg.set_label(current_note)
+	add_beat()
 	if counter >= 7:
 		elapsed_time += delta
 
@@ -139,3 +137,13 @@ func success_cut():
 func wipe():
 	print("works")
 	anim.play("remove_" + current_veggie)
+
+func add_beat():
+	var time_error = abs(current_time - nearest_beat_time)
+	var cooldown = false
+	if time_error < 0.01 && !cooldown:
+		KeyBg.beat()
+		KeyBg.set_label(current_note)
+		cooldown = true
+		await get_tree().create_timer(0.1).timeout
+		cooldown = false
