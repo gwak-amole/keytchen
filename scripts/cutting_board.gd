@@ -95,13 +95,9 @@ func _input(event):
 			if elapsed_time > time_allowed_between:
 				recent_notes = []
 			elapsed_time = 0
-			check_note(event.pitch)
-			print("received" + str(event.pitch))
-			print(counter)
-			print("elapsed time: " + str(elapsed_time) + " time_allowed " + str(time_allowed_between))
 			if potato_mode:
 				recent_notes.append(event.pitch)
-				
+				check_potato_smash(recent_notes)
 			elif counter >= 7 && elapsed_time < time_allowed_between:
 				print("checking wipe")
 				print(recent_notes)
@@ -110,6 +106,8 @@ func _input(event):
 					recent_notes.remove_at(0)
 				if recent_notes == wipe_pattern:
 					wipe()
+			else:
+				check_note(event.pitch)
 	if event.is_action_pressed("ui_accept"):
 		if counter < 7:
 			check_note(pattern[counter])
@@ -123,7 +121,7 @@ func check_note(pitch: int):
 	var time_error = abs(current_time - nearest_beat_time)
 	print(time_error)
 	print(counter)
-	if counter < 7 && pitch == pattern[counter] && time_error <= error_allowed:
+	if (counter < 7 && pitch == pattern[counter])&& time_error <= error_allowed:
 		print("success")
 		success_cut()
 	else:
@@ -147,3 +145,9 @@ func add_beat():
 		cooldown = true
 		await get_tree().create_timer(0.1).timeout
 		cooldown = false
+		
+func check_potato_smash(notes: Array):
+	var time_error = abs(current_time - nearest_beat_time)
+	if notes == potato_smash || notes == potato_smash2 && time_error <= error_allowed:
+		print("potato success")
+		success_cut()

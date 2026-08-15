@@ -11,11 +11,11 @@ func _process(delta: float) -> void:
 	pass
 
 func set_label(label_text: String):
+	label.text = label_text
 	if label.text.to_upper() == "WIPE":
 		label.add_theme_font_size_override("font_size", 50)
 	else:
 		label.add_theme_font_size_override("font_size", 120)
-	label.text = label_text
 	label.show()
 
 func set_double_label(text1: String, text2: String):
