@@ -22,6 +22,7 @@ var secs_per_beat = 0.5
 var error_allowed = 0.15
 var current_time: float
 var current_note
+var last_shown_beat := -1
 
 # wipe mechanic
 var recent_notes = []
@@ -51,7 +52,7 @@ func reset():
 		print("potato")
 		potato_mode = true
 		pattern = potato_smash
-		time_allowed_between = 0.5
+		time_allowed_between = 0.05
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -103,6 +104,8 @@ func _input(event):
 				print("resetting recent notes")
 				recent_notes = []
 			elapsed_time = 0
+			if counter >= 7: 
+				time_allowed_between = 0.5
 			if potato_mode:
 				recent_notes.append(event.pitch)
 				check_potato_smash(recent_notes)
@@ -144,14 +147,10 @@ func wipe():
 	anim.play("remove_" + current_veggie)
 
 func add_beat():
-	var time_error = abs(current_time - nearest_beat_time)
-	var cooldown = false
-	if time_error < 0.01 && !cooldown:
+	if nearest_beat_number != last_shown_beat:
+		last_shown_beat = nearest_beat_number
 		KeyBg.beat()
 		KeyBg.set_label(current_note)
-		cooldown = true
-		await get_tree().create_timer(0.1).timeout
-		cooldown = false
 
 func add_potato_beat():
 	var time_error = abs(current_time - nearest_beat_time)
