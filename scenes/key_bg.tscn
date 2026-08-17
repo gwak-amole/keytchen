@@ -3,12 +3,21 @@
 [ext_resource type="Script" uid="uid://datlm3eevp81v" path="res://scripts/key_bg.gd" id="1_ki2qr"]
 [ext_resource type="Texture2D" uid="uid://bgyoqnno8ha7a" path="res://assets/key_guide/key_background.png" id="1_wkrdr"]
 [ext_resource type="FontFile" uid="uid://cbihm5r4u0uc7" path="res://fonts/Press_Start_2P/PressStart2P-Regular.ttf" id="2_254qn"]
+[ext_resource type="Texture2D" uid="uid://dctyy1mbpb2xx" path="res://assets/key_guide/key_highlight.png" id="4_2vayj"]
 
-[node name="key_bg" type="CanvasLayer" unique_id=965582036 node_paths=PackedStringArray("label")]
+[node name="key_bg" type="CanvasLayer" unique_id=965582036 node_paths=PackedStringArray("label", "ckey", "dkey", "ekey", "fkey", "gkey", "akey", "bkey")]
 script = ExtResource("1_ki2qr")
 label = NodePath("Panel/Label")
+ckey = NodePath("Panel/c")
+dkey = NodePath("Panel/d")
+ekey = NodePath("Panel/e")
+fkey = NodePath("Panel/f")
+gkey = NodePath("Panel/g")
+akey = NodePath("Panel/a")
+bkey = NodePath("Panel/b")
 
 [node name="Panel" type="Panel" parent="." unique_id=370610623]
+texture_filter = 1
 offset_left = 10.0
 offset_right = 290.0
 offset_bottom = 648.0
@@ -42,3 +51,67 @@ theme_override_font_sizes/font_size = 120
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
+
+[node name="c" type="TextureRect" parent="Panel" unique_id=999501549]
+layout_mode = 0
+offset_left = 142.0
+offset_top = 528.0
+offset_right = 172.0
+offset_bottom = 648.0
+texture = ExtResource("4_2vayj")
+
+[node name="d" type="TextureRect" parent="Panel" unique_id=114718062]
+layout_mode = 0
+offset_left = 176.0
+offset_top = 528.0
+offset_right = 206.0
+offset_bottom = 648.0
+texture = ExtResource("4_2vayj")
+
+[node name="e" type="TextureRect" parent="Panel" unique_id=689059435]
+layout_mode = 0
+offset_left = 210.0
+offset_top = 528.0
+offset_right = 240.0
+offset_bottom = 648.0
+texture = ExtResource("4_2vayj")
+
+[node name="f" type="TextureRect" parent="Panel" unique_id=991764569]
+layout_mode = 0
+offset_left = 244.0
+offset_top = 528.0
+offset_right = 274.0
+offset_bottom = 648.0
+texture = ExtResource("4_2vayj")
+
+[node name="g" type="TextureRect" parent="Panel" unique_id=988635925]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 528.0
+offset_right = 70.0
+offset_bottom = 648.0
+texture = ExtResource("4_2vayj")
+
+[node name="a" type="TextureRect" parent="Panel" unique_id=1674755538]
+layout_mode = 0
+offset_left = 74.0
+offset_top = 528.0
+offset_right = 104.0
+offset_bottom = 648.0
+texture = ExtResource("4_2vayj")
+
+[node name="b" type="TextureRect" parent="Panel" unique_id=376773361]
+layout_mode = 0
+offset_left = 108.0
+offset_top = 528.0
+offset_right = 138.0
+offset_bottom = 648.0
+texture = ExtResource("4_2vayj")
+
+[node name="flow" type="TextureRect" parent="Panel" unique_id=23285414]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 528.0
+offset_right = 36.0
+offset_bottom = 648.0
+texture = ExtResource("4_2vayj")

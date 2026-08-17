@@ -1,6 +1,14 @@
 extends CanvasLayer
 
 @export var label: Label
+@export var ckey: TextureRect
+@export var dkey: TextureRect
+@export var ekey: TextureRect
+@export var fkey: TextureRect
+@export var gkey: TextureRect
+@export var akey: TextureRect
+@export var bkey: TextureRect
+@export var flowkey: TextureRect
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
