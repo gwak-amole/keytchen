@@ -62,6 +62,9 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	current_time = music.get_playback_position()
+	current_time += AudioServer.get_time_since_last_mix()
+	current_time -= AudioServer.get_output_latency()
+	
 	nearest_beat_number = round(current_time / secs_per_beat)
 	nearest_beat_time = nearest_beat_number * secs_per_beat
 	
