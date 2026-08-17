@@ -16,10 +16,9 @@ var current_veggies: Array[String] = ["carrot", "potato", "zucchini"]
 var current_veggie: String
 
 # music timing
-var beat_length = 0.5
 var nearest_beat_time = 0.0
 var nearest_beat_number = 0
-var secs_per_beat = 1.0
+var secs_per_beat = 0.5
 var error_allowed = 0.15
 var current_time: float
 var current_note
@@ -65,6 +64,7 @@ func _process(delta: float) -> void:
 	current_time = music.get_playback_position()
 	nearest_beat_number = round(current_time / secs_per_beat)
 	nearest_beat_time = nearest_beat_number * secs_per_beat
+	
 	if (counter < 7 and !potato_mode) || (counter < 2 and potato_mode):
 		match pattern[counter]:
 			53:
