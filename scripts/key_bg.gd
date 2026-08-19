@@ -9,10 +9,20 @@ extends CanvasLayer
 @export var akey: TextureRect
 @export var bkey: TextureRect
 @export var flowkey: TextureRect
+var wipe_prompt = false
+var being_wrong = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	hide()
+	ckey.hide()
+	dkey.hide()
+	ekey.hide()
+	fkey.hide()
+	flowkey.hide()
+	gkey.hide()
+	akey.hide()
+	bkey.hide()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -55,3 +65,31 @@ func beat():
 	var tween = create_tween()
 	tween.tween_property(label, "scale", Vector2(1.15, 1.15), 0.05)
 	tween.tween_property(label, "scale", Vector2.ONE, 0.05)
+	if !wipe_prompt && !being_wrong:
+		ckey.hide()
+		dkey.hide()
+		ekey.hide()
+		fkey.hide()
+		flowkey.hide()
+		gkey.hide()
+		akey.hide()
+		bkey.hide()
+	flowkey.texture = load("res://assets/key_guide/key_highlight.png")
+	gkey.texture = load("res://assets/key_guide/key_highlight.png")
+	akey.texture = load("res://assets/key_guide/key_highlight.png")
+	bkey.texture = load("res://assets/key_guide/key_highlight.png")
+	ckey.texture = load("res://assets/key_guide/key_highlight.png")
+	dkey.texture = load("res://assets/key_guide/key_highlight.png")
+	ekey.texture = load("res://assets/key_guide/key_highlight.png")
+	fkey.texture = load("res://assets/key_guide/key_highlight.png")
+
+func wipeshow():
+	if wipe_prompt:
+		ckey.show()
+		dkey.show()
+		ekey.show()
+		fkey.show()
+		flowkey.show()
+		gkey.show()
+		akey.show()
+		bkey.show()

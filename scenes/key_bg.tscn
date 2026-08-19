@@ -5,7 +5,7 @@
 [ext_resource type="FontFile" uid="uid://cbihm5r4u0uc7" path="res://fonts/Press_Start_2P/PressStart2P-Regular.ttf" id="2_254qn"]
 [ext_resource type="Texture2D" uid="uid://dctyy1mbpb2xx" path="res://assets/key_guide/key_highlight.png" id="4_2vayj"]
 
-[node name="key_bg" type="CanvasLayer" unique_id=965582036 node_paths=PackedStringArray("label", "ckey", "dkey", "ekey", "fkey", "gkey", "akey", "bkey")]
+[node name="key_bg" type="CanvasLayer" unique_id=965582036 node_paths=PackedStringArray("label", "ckey", "dkey", "ekey", "fkey", "gkey", "akey", "bkey", "flowkey")]
 script = ExtResource("1_ki2qr")
 label = NodePath("Panel/Label")
 ckey = NodePath("Panel/c")
@@ -15,6 +15,7 @@ fkey = NodePath("Panel/f")
 gkey = NodePath("Panel/g")
 akey = NodePath("Panel/a")
 bkey = NodePath("Panel/b")
+flowkey = NodePath("Panel/flow")
 
 [node name="Panel" type="Panel" parent="." unique_id=370610623]
 texture_filter = 1

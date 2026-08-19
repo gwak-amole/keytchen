@@ -119,7 +119,9 @@ func _input(event):
 			else:
 				check_note(event.pitch)
 	if event.is_action_pressed("ui_accept"):
-		if counter < 7:
+		if potato_mode:
+			check_potato_smash([60, 64])
+		elif counter < 7:
 			check_note(pattern[counter])
 		else:
 			bypass_wipe = true
@@ -132,9 +134,42 @@ func check_note(pitch: int):
 	print(time_error)
 	print(counter)
 	if (counter < 7 && pitch == pattern[counter])&& time_error <= error_allowed:
+		# if success
 		print("success")
 		success_cut()
+	elif (counter < 7 && pitch != pattern[counter])&& time_error <= error_allowed:
+		KeyBg.being_wrong = true;
+		match pitch:
+			53: 
+				KeyBg.flowkey.show()
+				KeyBg.flowkey.texture = load("res://assets/key_guide/key_wrong.png")
+			55:
+				KeyBg.gkey.show()
+				KeyBg.gkey.texture = load("res://assets/key_guide/key_wrong.png")
+			57:
+				KeyBg.akey.show()
+				KeyBg.akey.texture = load("res://assets/key_guide/key_wrong.png")
+			59:
+				KeyBg.bkey.show()
+				KeyBg.bkey.texture = load("res://assets/key_guide/key_wrong.png")
+			60:
+				KeyBg.ckey.show()
+				KeyBg.ckey.texture = load("res://assets/key_guide/key_wrong.png")
+			62:
+				KeyBg.dkey.show()
+				KeyBg.dkey.texture = load("res://assets/key_guide/key_wrong.png")
+			64:
+				KeyBg.ekey.show()
+				KeyBg.ekey.texture = load("res://assets/key_guide/key_wrong.png")
+			65:
+				KeyBg.fkey.show()
+				KeyBg.fkey.texture = load("res://assets/key_guide/key_wrong.png")
+		pass
+	elif (counter < 7 && pitch != pattern[counter])&& time_error > error_allowed:
+		# if timing is wrong
+		pass
 	else:
+		# both key and timing is wrong
 		print("failed")
 
 func success_cut():
@@ -143,24 +178,40 @@ func success_cut():
 		counter += 1;
 	
 func wipe():
+	KeyBg.wipe_prompt = true
 	print("works")
+	KeyBg.wipeshow()
 	anim.play("remove_" + current_veggie)
+	await anim.animation_finished
+	KeyBg.wipe_prompt = false
 
 func add_beat():
 	if nearest_beat_number != last_shown_beat:
+		KeyBg.being_wrong = false
 		last_shown_beat = nearest_beat_number
 		KeyBg.beat()
 		KeyBg.set_label(current_note)
+		match current_note:
+			"C": KeyBg.ckey.show()
+			"D": KeyBg.dkey.show()
+			"E": KeyBg.ekey.show()
+			"F^": KeyBg.fkey.show()
+			"F": KeyBg.flowkey.show()
+			"G": KeyBg.gkey.show()
+			"A": KeyBg.akey.show()
+			"B": KeyBg.bkey.show()
 
 func add_potato_beat():
-	var time_error = abs(current_time - nearest_beat_time)
-	var cooldown = false
-	if time_error < 0.01 && !cooldown:
-		KeyBg.beat()
-		KeyBg.set_double_label(potato_smash)
-		cooldown = true
-		await get_tree().create_timer(0.1).timeout
-		cooldown = false
+	print(nearest_beat_number)
+	print(last_shown_beat)
+	if nearest_beat_number != last_shown_beat:
+		last_shown_beat = nearest_beat_number
+		var time_error = abs(current_time - nearest_beat_time)
+		if time_error < 0.01:
+			KeyBg.beat()
+			KeyBg.set_double_label(potato_smash)
+			KeyBg.ckey.show()
+			KeyBg.ekey.show()
 		
 func check_potato_smash(notes: Array):
 	print("checking potato smash")
