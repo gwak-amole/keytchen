@@ -93,3 +93,8 @@ func wipeshow():
 		gkey.show()
 		akey.show()
 		bkey.show()
+		
+func turn_red():
+	var tween = create_tween()
+	tween.tween_property(label, "modulate", Color.RED, 0.05)
+	tween.tween_property(label, "modulate", Color.WHITE, 0.05)

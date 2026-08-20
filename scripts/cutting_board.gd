@@ -127,9 +127,6 @@ func _input(event):
 			bypass_wipe = true
 
 func check_note(pitch: int):
-	print("difference number" + str(current_time - nearest_beat_time))
-	print("nearest beat number" + str(nearest_beat_number))
-	print("nearest beat time" + str(nearest_beat_time))
 	var time_error = abs(current_time - nearest_beat_time)
 	print(time_error)
 	print(counter)
@@ -137,40 +134,17 @@ func check_note(pitch: int):
 		# if success
 		print("success")
 		success_cut()
-	elif (counter < 7 && pitch != pattern[counter])&& time_error <= error_allowed:
-		KeyBg.being_wrong = true;
-		match pitch:
-			53: 
-				KeyBg.flowkey.show()
-				KeyBg.flowkey.texture = load("res://assets/key_guide/key_wrong.png")
-			55:
-				KeyBg.gkey.show()
-				KeyBg.gkey.texture = load("res://assets/key_guide/key_wrong.png")
-			57:
-				KeyBg.akey.show()
-				KeyBg.akey.texture = load("res://assets/key_guide/key_wrong.png")
-			59:
-				KeyBg.bkey.show()
-				KeyBg.bkey.texture = load("res://assets/key_guide/key_wrong.png")
-			60:
-				KeyBg.ckey.show()
-				KeyBg.ckey.texture = load("res://assets/key_guide/key_wrong.png")
-			62:
-				KeyBg.dkey.show()
-				KeyBg.dkey.texture = load("res://assets/key_guide/key_wrong.png")
-			64:
-				KeyBg.ekey.show()
-				KeyBg.ekey.texture = load("res://assets/key_guide/key_wrong.png")
-			65:
-				KeyBg.fkey.show()
-				KeyBg.fkey.texture = load("res://assets/key_guide/key_wrong.png")
-		pass
-	elif (counter < 7 && pitch != pattern[counter])&& time_error > error_allowed:
+	elif (counter < 7 && pitch != pattern[counter]):
+		# if key is wrong
+		wrong(pitch)
+	elif time_error > error_allowed:
 		# if timing is wrong
-		pass
+		print("timing is wrong")
+		wrong(pitch)
 	else:
 		# both key and timing is wrong
-		print("failed")
+		print("for some other reason??")
+		print("time_error: " + str(time_error) + " error allowed: " + str(error_allowed))
 
 func success_cut():
 	if counter < 7:
@@ -225,3 +199,32 @@ func check_potato_smash(notes: Array):
 		potato_mode = false
 		print("potato mode now false")
 	notes = []
+	
+func wrong(pitch: int):
+	KeyBg.turn_red()
+	KeyBg.being_wrong = true;
+	match pitch:
+		53: 
+			KeyBg.flowkey.show()
+			KeyBg.flowkey.texture = load("res://assets/key_guide/key_wrong.png")
+		55:
+			KeyBg.gkey.show()
+			KeyBg.gkey.texture = load("res://assets/key_guide/key_wrong.png")
+		57:
+			KeyBg.akey.show()
+			KeyBg.akey.texture = load("res://assets/key_guide/key_wrong.png")
+		59:
+			KeyBg.bkey.show()
+			KeyBg.bkey.texture = load("res://assets/key_guide/key_wrong.png")
+		60:
+			KeyBg.ckey.show()
+			KeyBg.ckey.texture = load("res://assets/key_guide/key_wrong.png")
+		62:
+			KeyBg.dkey.show()
+			KeyBg.dkey.texture = load("res://assets/key_guide/key_wrong.png")
+		64:
+			KeyBg.ekey.show()
+			KeyBg.ekey.texture = load("res://assets/key_guide/key_wrong.png")
+		65:
+			KeyBg.fkey.show()
+			KeyBg.fkey.texture = load("res://assets/key_guide/key_wrong.png")
