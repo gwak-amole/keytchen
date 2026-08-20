@@ -62,33 +62,25 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	current_time = music.get_playback_position()
-	current_time += AudioServer.get_time_since_last_mix()
-	current_time -= AudioServer.get_output_latency()
+	current_time = get_time()
 	
 	nearest_beat_number = round(current_time / secs_per_beat)
 	nearest_beat_time = nearest_beat_number * secs_per_beat
 	
 	if (counter < 7 and !potato_mode) || (counter < 2 and potato_mode):
 		match pattern[counter]:
-			53:
-				current_note = "F"
-			55:
-				current_note = "G"
-			57:
-				current_note = "A"
-			59:
-				current_note = "B"
-			60:
-				current_note = "C"
-			62:
-				current_note = "D"
-			64:
-				current_note = "E"
-			65:
-				current_note = "F^"
+			53: current_note = "F"
+			55: current_note = "G"
+			57: current_note = "A"
+			59: current_note = "B"
+			60: current_note = "C"
+			62: current_note = "D"
+			64: current_note = "E"
+			65: current_note = "F^"
 	else:
 		current_note = "WIPE"
+		
+	
 	if potato_mode:
 		add_potato_beat()
 	else:
@@ -228,3 +220,11 @@ func wrong(pitch: int):
 		65:
 			KeyBg.fkey.show()
 			KeyBg.fkey.texture = load("res://assets/key_guide/key_wrong.png")
+
+func get_time():
+	var time
+	time = music.get_playback_position()
+	time += AudioServer.get_time_since_last_mix()
+	time -= AudioServer.get_output_latency()
+	return time
+	
