@@ -62,11 +62,16 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	# finding the current time each process frame
 	current_time = get_time()
 	
+	# measuring closest beat & its corresponding time
+	# this is to judge time error later
 	nearest_beat_number = round(current_time / secs_per_beat)
 	nearest_beat_time = nearest_beat_number * secs_per_beat
 	
+	# this section's to match current notes from integer values to letter notes
+	# if neither then it's a wipe event
 	if (counter < 7 and !potato_mode) || (counter < 2 and potato_mode):
 		match pattern[counter]:
 			53: current_note = "F"
@@ -80,11 +85,17 @@ func _process(delta: float) -> void:
 	else:
 		current_note = "WIPE"
 		
+	# if it's a new beat, trigger beat functions :D
+	# the beat functions are just for aesthetics
+	var current_beat = floori(current_time / secs_per_beat)
+	if current_beat != last_shown_beat:
+		last_shown_beat = current_beat
+		if potato_mode:
+			add_potato_beat()
+		else:
+			add_beat()
 	
-	if potato_mode:
-		add_potato_beat()
-	else:
-		add_beat()
+	# measuring time
 	elapsed_time += delta
 
 func _input(event):
@@ -152,32 +163,27 @@ func wipe():
 	KeyBg.wipe_prompt = false
 
 func add_beat():
-	if nearest_beat_number != last_shown_beat:
-		KeyBg.being_wrong = false
-		last_shown_beat = nearest_beat_number
-		KeyBg.beat()
-		KeyBg.set_label(current_note)
-		match current_note:
-			"C": KeyBg.ckey.show()
-			"D": KeyBg.dkey.show()
-			"E": KeyBg.ekey.show()
-			"F^": KeyBg.fkey.show()
-			"F": KeyBg.flowkey.show()
-			"G": KeyBg.gkey.show()
-			"A": KeyBg.akey.show()
-			"B": KeyBg.bkey.show()
+	KeyBg.being_wrong = false
+	last_shown_beat = nearest_beat_number
+	KeyBg.beat()
+	KeyBg.set_label(current_note)
+	match current_note:
+		"C": KeyBg.ckey.show()
+		"D": KeyBg.dkey.show()
+		"E": KeyBg.ekey.show()
+		"F^": KeyBg.fkey.show()
+		"F": KeyBg.flowkey.show()
+		"G": KeyBg.gkey.show()
+		"A": KeyBg.akey.show()
+		"B": KeyBg.bkey.show()
 
 func add_potato_beat():
 	print(nearest_beat_number)
 	print(last_shown_beat)
-	if nearest_beat_number != last_shown_beat:
-		last_shown_beat = nearest_beat_number
-		var time_error = abs(current_time - nearest_beat_time)
-		if time_error < 0.01:
-			KeyBg.beat()
-			KeyBg.set_double_label(potato_smash)
-			KeyBg.ckey.show()
-			KeyBg.ekey.show()
+	KeyBg.beat()
+	KeyBg.set_double_label(potato_smash)
+	KeyBg.ckey.show()
+	KeyBg.ekey.show()
 		
 func check_potato_smash(notes: Array):
 	print("checking potato smash")
