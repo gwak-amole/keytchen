@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 
 UiControl="*uid://cgvahwxh34qjv"
 KeyBg="*uid://i4b3uvpifkjt"
+Global="*uid://drwnkcpn14l74"
 
 [display]
 
