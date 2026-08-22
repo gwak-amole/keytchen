@@ -220,7 +220,7 @@ func check_potato_smash(notes: Array):
 	if counter >= 7:
 		potato_mode = false
 	# reset the notes array to be empty
-	notes = []
+	notes.clear()
 	
 func wrong(pitch: int):
 	# general function to turn labels and notes red if something is wrong
