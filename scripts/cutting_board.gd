@@ -41,9 +41,17 @@ var potato_smash2: Array[int] = [64, 60]
 func reset():
 	# reset the counter
 	counter = 1
+	
 	# reset all animations
 	anim.play("RESET")
+	
+	# reset KeyBg properly (esp after wipe)
 	KeyBg.wipe_prompt = false
+	KeyBg.hide_all_keys()
+	
+	show_right_notes()
+	
+	# reset timing stuff
 	elapsed_time = 0
 	recent_notes = []
 	# determine what veggie is being cut
@@ -71,6 +79,8 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	show_right_notes()
+	
 	# finding the current time each process frame
 	current_time = get_time()
 	
@@ -204,22 +214,10 @@ func add_beat():
 	# visual beat controller for regular veggies
 	KeyBg.being_wrong = false
 	KeyBg.beat()
-	match current_note:
-		"C": KeyBg.ckey.show()
-		"D": KeyBg.dkey.show()
-		"E": KeyBg.ekey.show()
-		"F^": KeyBg.fkey.show()
-		"F": KeyBg.flowkey.show()
-		"G": KeyBg.gkey.show()
-		"A": KeyBg.akey.show()
-		"B": KeyBg.bkey.show()
 
 func add_potato_beat():
 	# visual beat controller for the potato
 	KeyBg.beat()
-	KeyBg.set_double_label(potato_smash)
-	KeyBg.ckey.show()
-	KeyBg.ekey.show()
 		
 func check_potato_smash(notes: Array):
 	print("checking potato smash")
@@ -266,6 +264,23 @@ func wrong(pitch: int):
 		65:
 			KeyBg.fkey.show()
 			KeyBg.fkey.texture = load("res://assets/key_guide/key_wrong.png")
+
+func show_right_notes():
+	# constantly keep notes accurate
+	KeyBg.hide_all_keys()
+	if !potato_mode:
+		match current_note:
+			"C": KeyBg.ckey.show()
+			"D": KeyBg.dkey.show()
+			"E": KeyBg.ekey.show()
+			"F^": KeyBg.fkey.show()
+			"F": KeyBg.flowkey.show()
+			"G": KeyBg.gkey.show()
+			"A": KeyBg.akey.show()
+			"B": KeyBg.bkey.show()
+	else:
+		KeyBg.ckey.show()
+		KeyBg.ekey.show()
 
 func get_time():
 	# general function to get very accurate time (thanks godot)

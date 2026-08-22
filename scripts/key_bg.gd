@@ -15,14 +15,7 @@ var being_wrong = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	hide()
-	ckey.hide()
-	dkey.hide()
-	ekey.hide()
-	fkey.hide()
-	flowkey.hide()
-	gkey.hide()
-	akey.hide()
-	bkey.hide()
+	hide_all_keys()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -66,14 +59,7 @@ func beat():
 	tween.tween_property(label, "scale", Vector2(1.15, 1.15), 0.05)
 	tween.tween_property(label, "scale", Vector2.ONE, 0.05)
 	if !wipe_prompt && !being_wrong:
-		ckey.hide()
-		dkey.hide()
-		ekey.hide()
-		fkey.hide()
-		flowkey.hide()
-		gkey.hide()
-		akey.hide()
-		bkey.hide()
+		hide_all_keys()
 	flowkey.texture = load("res://assets/key_guide/key_highlight.png")
 	gkey.texture = load("res://assets/key_guide/key_highlight.png")
 	akey.texture = load("res://assets/key_guide/key_highlight.png")
@@ -98,3 +84,13 @@ func turn_red():
 	var tween = create_tween()
 	tween.tween_property(label, "modulate", Color.RED, 0.05)
 	tween.tween_property(label, "modulate", Color.WHITE, 0.05)
+
+func hide_all_keys():
+	ckey.hide()
+	dkey.hide()
+	ekey.hide()
+	fkey.hide()
+	flowkey.hide()
+	gkey.hide()
+	akey.hide()
+	bkey.hide()
