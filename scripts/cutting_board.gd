@@ -11,10 +11,6 @@ var zucchini_pattern: Array[int] = [0, 60, 64, 60, 64, 60, 64]
 # set counter for which slice
 var counter = 1;
 
-# veggie selection
-var current_veggies: Array[String] = ["carrot", "potato", "zucchini"]
-var current_veggie: String
-
 # music timing
 var nearest_beat_time = 0.0
 var nearest_beat_number = 0
@@ -55,18 +51,18 @@ func reset():
 	elapsed_time = 0
 	recent_notes = []
 	# determine what veggie is being cut
-	current_veggie = current_veggies.pick_random()
-	if current_veggie == "carrot":
+	Global.current_veggie = Global.current_veggies.pick_random()
+	if Global.current_veggie == "carrot":
 		print("carrot")
 		pattern = carrot_pattern
 		time_allowed_between = 0.5
 		potato_mode = false
-	elif current_veggie == "zucchini":
+	elif Global.current_veggie == "zucchini":
 		print("zucchini")
 		pattern = zucchini_pattern
 		time_allowed_between = 0.5
 		potato_mode = false
-	elif current_veggie == "potato":
+	elif Global.current_veggie == "potato":
 		print("potato")
 		potato_mode = true
 		pattern = potato_smash
