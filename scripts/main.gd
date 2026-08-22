@@ -71,3 +71,7 @@ func _on_panchoice_pressed() -> void:
 		stove2_occupied = true
 		stove2.grab_focus()
 	pot_pan_choice.hide()
+
+
+func _on_cutting_board_pressed() -> void:
+	get_tree().change_scene_to_file("res://scenes/cutting_board.tscn")
