@@ -30,3 +30,6 @@ func slice6():
 	
 func remove():
 	anim.play("remove")
+	
+func reset():
+	anim.play("RESET")

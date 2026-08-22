@@ -37,7 +37,14 @@ var potato_smash: Array[int] = [60, 64]
 var potato_smash2: Array[int] = [64, 60]
 
 func reset():
-	# reset function to determine what veggie is being cut
+	# reset the counter
+	counter = 1
+	# reset all animations
+	anim.play("RESET")
+	KeyBg.wipe_prompt = false
+	elapsed_time = 0
+	recent_notes = []
+	# determine what veggie is being cut
 	current_veggie = current_veggies.pick_random()
 	if current_veggie == "carrot":
 		print("carrot")
@@ -59,7 +66,6 @@ func reset():
 func _ready() -> void:
 	reset()
 	KeyBg.show()
-	current_veggie = "carrot"
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -180,6 +186,8 @@ func wipe():
 	anim.play("remove_" + current_veggie)
 	await anim.animation_finished
 	KeyBg.wipe_prompt = false
+	# reset veggie
+	reset()
 
 func add_beat():
 	# visual beat controller for regular veggies
