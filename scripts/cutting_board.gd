@@ -30,9 +30,11 @@ var wipe_pattern = [60, 59, 57, 55, 53]
 var time_allowed_between = 0.5
 var elapsed_time = 0.0
 var bypass_wipe = false
+var is_wiping = false
 
 # mode set
 var potato_mode = false
+var potato_pattern = []
 var potato_smash: Array[int] = [60, 64]
 var potato_smash2: Array[int] = [64, 60]
 
@@ -79,7 +81,7 @@ func _process(delta: float) -> void:
 	
 	# this section's to match current notes from integer values to letter notes
 	# if neither then it's a wipe event
-	if (counter < 7 and !potato_mode) || (counter < 2 and potato_mode):
+	if counter < 7 and !potato_mode:
 		match pattern[counter]:
 			53: current_note = "F"
 			55: current_note = "G"
@@ -91,6 +93,12 @@ func _process(delta: float) -> void:
 			65: current_note = "F^"
 	else:
 		current_note = "WIPE"
+	
+	# constantly keep label accurate
+	if !potato_mode:
+		KeyBg.set_label(current_note)
+	else:
+		KeyBg.set_double_label(potato_smash)
 		
 	# if it's a new beat, trigger beat functions :D
 	# the beat functions are just for aesthetics
@@ -103,7 +111,7 @@ func _process(delta: float) -> void:
 			add_beat()
 	
 	# to give wipe visual
-	if counter >= 7 && elapsed_time < time_allowed_between:
+	if counter >= 7:
 		KeyBg.wipe_prompt = true
 		KeyBg.wipeshow()
 	
@@ -121,7 +129,6 @@ func _input(event):
 			
 			# reset the time elapsed if input is detected
 			elapsed_time = 0
-			
 			# if the counter is larger than 7 then make time_allowed_between 0.5
 			# this is to change it to 0.5 if it's in potato mode
 			# because wipe needs to have a time_allowed_between of 0.5 :DDD
@@ -130,20 +137,21 @@ func _input(event):
 				
 			# if the current veggie is potato add input notes to notes array
 			# and check if timing is right using the function
-			if potato_mode:
-				recent_notes.append(event.pitch)
-				check_potato_smash(recent_notes)
-			# to determine that it's time for a wipe sequence instead
-			elif counter >= 7 && elapsed_time < time_allowed_between:
+			if counter >= 7:
+				print('checking wipe now')
 				recent_notes.append(event.pitch)
 				print(recent_notes)
+				print(wipe_pattern)
 				# if recent_notes is too crowded just get rid of the first element
 				if recent_notes.size() > 5:
 					recent_notes.remove_at(0)
-					
-				# if the recent_notes matches the wipe_pattern then execute wipe()!
+				# if the recent_notes matches the wipe_pattern then execute wipe!
 				if recent_notes == wipe_pattern:
 					wipe()
+			elif potato_mode:
+				recent_notes.append(event.pitch)
+				check_potato_smash(recent_notes)
+			# to determine that it's time for a wipe sequence instead
 			else:
 				# if it's not potato mode or wipe time just check if note is right + timing
 				check_note(event.pitch)
@@ -176,15 +184,18 @@ func check_note(pitch: int):
 		print("time_error: " + str(time_error) + " error allowed: " + str(error_allowed))
 
 func success_cut():
-	# progress for the next slice
-	if counter < 7:
-		anim.play("Slice" + str(counter))
-		counter += 1;
+	if !is_wiping:
+		# progress for the next slice
+		if counter < 7:
+			anim.play("Slice" + str(counter))
+			counter += 1;
 	
 func wipe():
 	# wipe success function
-	anim.play("remove_" + current_veggie)
+	anim.play("remove_" + "carrot") # change this to be current_veggie later!
+	is_wiping = true
 	await anim.animation_finished
+	is_wiping = false
 	KeyBg.wipe_prompt = false
 	# reset veggie
 	reset()
@@ -193,7 +204,6 @@ func add_beat():
 	# visual beat controller for regular veggies
 	KeyBg.being_wrong = false
 	KeyBg.beat()
-	KeyBg.set_label(current_note)
 	match current_note:
 		"C": KeyBg.ckey.show()
 		"D": KeyBg.dkey.show()
@@ -212,15 +222,20 @@ func add_potato_beat():
 	KeyBg.ekey.show()
 		
 func check_potato_smash(notes: Array):
+	print("checking potato smash")
+	print(notes)
 	# check if notes for potato smash are correct
 	var time_error = abs(current_time - nearest_beat_time)
 	if (notes == potato_smash || notes == potato_smash2) && time_error <= error_allowed:
 		success_cut()
 	# if cut more than 7 times move onto the wipe thingy
 	if counter >= 7:
+		print("no longer potato mode")
 		potato_mode = false
-	# reset the notes array to be empty
-	notes.clear()
+		
+		recent_notes.clear()
+		elapsed_time = 0
+		time_allowed_between = 0.5
 	
 func wrong(pitch: int):
 	# general function to turn labels and notes red if something is wrong
