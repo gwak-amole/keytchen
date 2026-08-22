@@ -96,6 +96,11 @@ func _process(delta: float) -> void:
 		else:
 			add_beat()
 	
+	# to give wipe visual
+	if counter >= 7 && elapsed_time < time_allowed_between:
+		KeyBg.wipe_prompt = true
+		KeyBg.wipeshow()
+	
 	# measuring time
 	elapsed_time += delta
 
@@ -172,8 +177,6 @@ func success_cut():
 	
 func wipe():
 	# wipe success function
-	KeyBg.wipe_prompt = true
-	KeyBg.wipeshow()
 	anim.play("remove_" + current_veggie)
 	await anim.animation_finished
 	KeyBg.wipe_prompt = false
