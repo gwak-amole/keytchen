@@ -37,6 +37,7 @@ var potato_smash: Array[int] = [60, 64]
 var potato_smash2: Array[int] = [64, 60]
 
 func reset():
+	# reset function to determine what veggie is being cut
 	current_veggie = current_veggies.pick_random()
 	if current_veggie == "carrot":
 		print("carrot")
@@ -104,23 +105,38 @@ func _input(event):
 	if event is InputEventMIDI:
 		if event.message == MIDI_MESSAGE_NOTE_ON:
 			if elapsed_time > time_allowed_between:
-				print("resetting recent notes")
+				# if the time allowed between inputs is large enough just reset the array
 				recent_notes = []
+			
+			# reset the time elapsed if input is detected
 			elapsed_time = 0
+			
+			# if the counter is larger than 7 then make time_allowed_between 0.5
+			# this is to change it to 0.5 if it's in potato mode
+			# because wipe needs to have a time_allowed_between of 0.5 :DDD
 			if counter >= 7: 
 				time_allowed_between = 0.5
+				
+			# if the current veggie is potato add input notes to notes array
+			# and check if timing is right using the function
 			if potato_mode:
 				recent_notes.append(event.pitch)
 				check_potato_smash(recent_notes)
+			# to determine that it's time for a wipe sequence instead
 			elif counter >= 7 && elapsed_time < time_allowed_between:
 				recent_notes.append(event.pitch)
 				print(recent_notes)
+				# if recent_notes is too crowded just get rid of the first element
 				if recent_notes.size() > 5:
 					recent_notes.remove_at(0)
+					
+				# if the recent_notes matches the wipe_pattern then execute wipe()!
 				if recent_notes == wipe_pattern:
 					wipe()
 			else:
+				# if it's not potato mode or wipe time just check if note is right + timing
 				check_note(event.pitch)
+	# if i don't have my midi with me i just skip everything with this lol
 	if event.is_action_pressed("ui_accept"):
 		if potato_mode:
 			check_potato_smash([60, 64])
@@ -130,9 +146,8 @@ func _input(event):
 			bypass_wipe = true
 
 func check_note(pitch: int):
+	# get time_error to check timing
 	var time_error = abs(current_time - nearest_beat_time)
-	print(time_error)
-	print(counter)
 	if (counter < 7 && pitch == pattern[counter])&& time_error <= error_allowed:
 		# if success
 		print("success")
@@ -150,21 +165,22 @@ func check_note(pitch: int):
 		print("time_error: " + str(time_error) + " error allowed: " + str(error_allowed))
 
 func success_cut():
+	# progress for the next slice
 	if counter < 7:
 		anim.play("Slice" + str(counter))
 		counter += 1;
 	
 func wipe():
+	# wipe success function
 	KeyBg.wipe_prompt = true
-	print("works")
 	KeyBg.wipeshow()
 	anim.play("remove_" + current_veggie)
 	await anim.animation_finished
 	KeyBg.wipe_prompt = false
 
 func add_beat():
+	# visual beat controller for regular veggies
 	KeyBg.being_wrong = false
-	last_shown_beat = nearest_beat_number
 	KeyBg.beat()
 	KeyBg.set_label(current_note)
 	match current_note:
@@ -178,27 +194,25 @@ func add_beat():
 		"B": KeyBg.bkey.show()
 
 func add_potato_beat():
-	print(nearest_beat_number)
-	print(last_shown_beat)
+	# visual beat controller for the potato
 	KeyBg.beat()
 	KeyBg.set_double_label(potato_smash)
 	KeyBg.ckey.show()
 	KeyBg.ekey.show()
 		
 func check_potato_smash(notes: Array):
-	print("checking potato smash")
-	print("second")
-	print(notes)
+	# check if notes for potato smash are correct
 	var time_error = abs(current_time - nearest_beat_time)
 	if (notes == potato_smash || notes == potato_smash2) && time_error <= error_allowed:
-		print("potato success")
 		success_cut()
+	# if cut more than 7 times move onto the wipe thingy
 	if counter >= 7:
 		potato_mode = false
-		print("potato mode now false")
+	# reset the notes array to be empty
 	notes = []
 	
 func wrong(pitch: int):
+	# general function to turn labels and notes red if something is wrong
 	KeyBg.turn_red()
 	KeyBg.being_wrong = true;
 	match pitch:
@@ -228,6 +242,7 @@ func wrong(pitch: int):
 			KeyBg.fkey.texture = load("res://assets/key_guide/key_wrong.png")
 
 func get_time():
+	# general function to get very accurate time (thanks godot)
 	var time
 	time = music.get_playback_position()
 	time += AudioServer.get_time_since_last_mix()
