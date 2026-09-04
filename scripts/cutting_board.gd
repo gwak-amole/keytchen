@@ -45,11 +45,16 @@ func reset():
 	KeyBg.wipe_prompt = false
 	KeyBg.hide_all_keys()
 	
+	# show the right key highlight immediately
 	show_right_notes()
 	
 	# reset timing stuff
 	elapsed_time = 0
 	recent_notes = []
+	
+	# reset bypass wipe for times w/o midi
+	bypass_wipe = false
+	
 	# determine what veggie is being cut
 	Global.current_veggie = Global.current_veggies.pick_random()
 	if Global.current_veggie == "carrot":
