@@ -597,9 +597,10 @@ _data = {
 &"remove": SubResource("Animation_h3884")
 }
 
-[node name="zucchini" type="Node2D" unique_id=2117621057]
+[node name="zucchini" type="Node2D" unique_id=2117621057 node_paths=PackedStringArray("anim")]
 texture_filter = 1
 script = ExtResource("1_08ydl")
+anim = NodePath("AnimationPlayer")
 
 [node name="Slice1" type="Sprite2D" parent="." unique_id=1633619455]
 position = Vector2(-163.5, 1)

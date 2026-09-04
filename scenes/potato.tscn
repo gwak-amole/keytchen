@@ -597,8 +597,9 @@ _data = {
 &"remove": SubResource("Animation_h3884")
 }
 
-[node name="potato" type="Node2D" unique_id=1271553881]
+[node name="potato" type="Node2D" unique_id=1271553881 node_paths=PackedStringArray("anim")]
 script = ExtResource("1_qsmel")
+anim = NodePath("AnimationPlayer")
 
 [node name="Slice1" type="Sprite2D" parent="." unique_id=444096548]
 position = Vector2(-163.5, 1)

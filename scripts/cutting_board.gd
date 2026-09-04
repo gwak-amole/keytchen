@@ -34,6 +34,13 @@ var potato_pattern = []
 var potato_smash: Array[int] = [60, 64]
 var potato_smash2: Array[int] = [64, 60]
 
+# vegetable graphics
+@export var carrot: Node2D
+@export var zucchini: Node2D
+@export var potato: Node2D
+
+@export var vegetable_container: Node
+
 func reset():
 	# reset the counter
 	counter = 1
@@ -55,19 +62,26 @@ func reset():
 	# reset bypass wipe for times w/o midi
 	bypass_wipe = false
 	
+	# set every vegetable invisible
+	for child in vegetable_container.get_children():
+		child.hide()
+	
 	# determine what veggie is being cut
 	Global.current_veggie = Global.current_veggies.pick_random()
 	if Global.current_veggie == "carrot":
+		carrot.show()
 		print("carrot")
 		pattern = carrot_pattern
 		time_allowed_between = 0.5
 		potato_mode = false
 	elif Global.current_veggie == "zucchini":
+		zucchini.show()
 		print("zucchini")
 		pattern = zucchini_pattern
 		time_allowed_between = 0.5
 		potato_mode = false
 	elif Global.current_veggie == "potato":
+		potato.show()
 		print("potato")
 		potato_mode = true
 		pattern = potato_smash
@@ -203,7 +217,7 @@ func success_cut():
 	
 func wipe():
 	# wipe success function
-	anim.play("remove_" + "carrot") # change this to be current_veggie later!
+	anim.play("remove_" + Global.current_veggie) # change this to be current_veggie later!
 	is_wiping = true
 	await anim.animation_finished
 	is_wiping = false

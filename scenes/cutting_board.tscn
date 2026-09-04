@@ -13,7 +13,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("knife:position")
+tracks/0/path = NodePath("CanvasLayer/knife:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -25,10 +25,38 @@ tracks/0/keys = {
 tracks/1/type = "method"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("carrot")
+tracks/1/path = NodePath("vegetables/carrot")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"reset"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("vegetables/zucchini")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"reset"
+}]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("vegetables/potato")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -42,7 +70,7 @@ resource_name = "Slice1"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("knife:position")
+tracks/0/path = NodePath("CanvasLayer/knife:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -54,10 +82,38 @@ tracks/0/keys = {
 tracks/1/type = "method"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("carrot")
+tracks/1/path = NodePath("vegetables/carrot")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
+"times": PackedFloat32Array(0.15),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"slice1"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("vegetables/zucchini")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.15),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"slice1"
+}]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("vegetables/potato")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
 "times": PackedFloat32Array(0.15),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -71,7 +127,7 @@ resource_name = "Slice2"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("knife:position")
+tracks/0/path = NodePath("CanvasLayer/knife:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -83,10 +139,38 @@ tracks/0/keys = {
 tracks/1/type = "method"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("carrot")
+tracks/1/path = NodePath("vegetables/carrot")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
+"times": PackedFloat32Array(0.15),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"slice2"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("vegetables/zucchini")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.15),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"slice2"
+}]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("vegetables/potato")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
 "times": PackedFloat32Array(0.15),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -100,7 +184,7 @@ resource_name = "Slice3"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("knife:position")
+tracks/0/path = NodePath("CanvasLayer/knife:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -112,10 +196,38 @@ tracks/0/keys = {
 tracks/1/type = "method"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("carrot")
+tracks/1/path = NodePath("vegetables/carrot")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
+"times": PackedFloat32Array(0.15),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"slice3"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("vegetables/zucchini")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.15),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"slice3"
+}]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("vegetables/potato")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
 "times": PackedFloat32Array(0.15),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -129,7 +241,7 @@ resource_name = "Slice4"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("knife:position")
+tracks/0/path = NodePath("CanvasLayer/knife:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -141,10 +253,38 @@ tracks/0/keys = {
 tracks/1/type = "method"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("carrot")
+tracks/1/path = NodePath("vegetables/carrot")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
+"times": PackedFloat32Array(0.15),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"slice4"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("vegetables/zucchini")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.15),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"slice4"
+}]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("vegetables/potato")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
 "times": PackedFloat32Array(0.15),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -158,7 +298,7 @@ resource_name = "Slice5"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("knife:position")
+tracks/0/path = NodePath("CanvasLayer/knife:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -170,10 +310,38 @@ tracks/0/keys = {
 tracks/1/type = "method"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("carrot")
+tracks/1/path = NodePath("vegetables/carrot")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
+"times": PackedFloat32Array(0.15),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"slice5"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("vegetables/zucchini")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.15),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"slice5"
+}]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("vegetables/potato")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
 "times": PackedFloat32Array(0.15),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -187,7 +355,7 @@ resource_name = "Slice6"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("knife:position")
+tracks/0/path = NodePath("CanvasLayer/knife:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -199,10 +367,38 @@ tracks/0/keys = {
 tracks/1/type = "method"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("carrot")
+tracks/1/path = NodePath("vegetables/carrot")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
+"times": PackedFloat32Array(0.15),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"slice6"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("vegetables/zucchini")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.15),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"slice6"
+}]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("vegetables/potato")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
 "times": PackedFloat32Array(0.15),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -216,7 +412,7 @@ resource_name = "remove_carrot"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("knife:position")
+tracks/0/path = NodePath("CanvasLayer/knife:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -228,10 +424,44 @@ tracks/0/keys = {
 tracks/1/type = "method"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("carrot")
+tracks/1/path = NodePath("vegetables/carrot")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"remove"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_ejepp"]
+resource_name = "remove_potato"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("vegetables/potato")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"remove"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_boc4n"]
+resource_name = "remove_zucchini"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("vegetables/zucchini")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -249,10 +479,12 @@ _data = {
 &"Slice4": SubResource("Animation_tpo5p"),
 &"Slice5": SubResource("Animation_mwv5v"),
 &"Slice6": SubResource("Animation_f823b"),
-&"remove_carrot": SubResource("Animation_eaa65")
+&"remove_carrot": SubResource("Animation_eaa65"),
+&"remove_potato": SubResource("Animation_ejepp"),
+&"remove_zucchini": SubResource("Animation_boc4n")
 }
 
-[node name="cutting_board" type="Control" unique_id=772966986 node_paths=PackedStringArray("anim", "music")]
+[node name="cutting_board" type="Control" unique_id=772966986 node_paths=PackedStringArray("anim", "music", "carrot", "zucchini", "potato", "vegetable_container")]
 texture_filter = 1
 layout_mode = 3
 anchors_preset = 15
@@ -263,6 +495,10 @@ grow_vertical = 2
 script = ExtResource("1_7p0ku")
 anim = NodePath("AnimationPlayer")
 music = NodePath("AudioStreamPlayer")
+carrot = NodePath("vegetables/carrot")
+zucchini = NodePath("vegetables/zucchini")
+potato = NodePath("vegetables/potato")
+vegetable_container = NodePath("vegetables")
 
 [node name="bg" type="TextureRect" parent="." unique_id=1289708127]
 layout_mode = 0
@@ -270,19 +506,24 @@ offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("1_m4ftk")
 
-[node name="carrot" parent="." unique_id=1220712028 instance=ExtResource("2_oihve")]
+[node name="vegetables" type="Node" parent="." unique_id=1992622889]
+
+[node name="carrot" parent="vegetables" unique_id=1220712028 instance=ExtResource("2_oihve")]
 position = Vector2(790, 324)
 
-[node name="zucchini" parent="." unique_id=2117621057 instance=ExtResource("4_tpo5p")]
+[node name="zucchini" parent="vegetables" unique_id=2117621057 instance=ExtResource("4_tpo5p")]
+position = Vector2(790, 324)
 
-[node name="potato" parent="." unique_id=1271553881 instance=ExtResource("5_mwv5v")]
+[node name="potato" parent="vegetables" unique_id=1271553881 instance=ExtResource("5_mwv5v")]
+position = Vector2(790, 324)
 
-[node name="knife" type="TextureRect" parent="." unique_id=817819869]
-layout_mode = 0
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=120683339]
+
+[node name="knife" type="TextureRect" parent="CanvasLayer" unique_id=817819869]
 offset_left = 633.0
 offset_top = 109.0
 offset_right = 673.0
-offset_bottom = 509.0003
+offset_bottom = 509.0005
 texture = ExtResource("3_j4crm")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1175694663]
