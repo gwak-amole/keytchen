@@ -598,6 +598,7 @@ _data = {
 }
 
 [node name="potato" type="Node2D" unique_id=1271553881 node_paths=PackedStringArray("anim")]
+texture_filter = 1
 script = ExtResource("1_qsmel")
 anim = NodePath("AnimationPlayer")
 

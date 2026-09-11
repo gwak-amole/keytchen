@@ -232,15 +232,35 @@ func add_beat():
 
 func add_potato_beat():
 	# visual beat controller for the potato
+	KeyBg.being_wrong = false
 	KeyBg.beat()
 		
 func check_potato_smash(notes: Array):
 	print("checking potato smash")
 	print(notes)
-	# check if notes for potato smash are correct
-	var time_error = abs(current_time - nearest_beat_time)
-	if (notes == potato_smash || notes == potato_smash2) && time_error <= error_allowed:
-		success_cut()
+	if notes.size() == 1 && (notes[0] == 60 || notes[0] == 64):
+		pass
+	elif notes.size() == 1 && !(notes[0] == 60 || notes[0] == 64):
+		print("note is wrong potato")
+		print(notes[0])
+		wrong(notes[0])
+	else:
+		# check if notes for potato smash are correct
+		var time_error = abs(current_time - nearest_beat_time)
+		if (notes == potato_smash || notes == potato_smash2) && time_error <= error_allowed:
+			success_cut()
+		elif (counter < 7 && !(notes == potato_smash || notes == potato_smash2)):
+			# if key is wrong
+			wrong_potato(notes)
+		elif time_error > error_allowed:
+			# if timing is wrong
+			print("timing is wrong")
+			wrong_potato(notes)
+		else:
+			# both key and timing is wrong
+			print("for some other reason??")
+			print("time_error: " + str(time_error) + " error allowed: " + str(error_allowed))
+
 	# if cut more than 7 times move onto the wipe thingy
 	if counter >= 7:
 		print("no longer potato mode")
@@ -280,8 +300,42 @@ func wrong(pitch: int):
 			KeyBg.fkey.show()
 			KeyBg.fkey.texture = load("res://assets/key_guide/key_wrong.png")
 
+func wrong_potato(notes: Array):
+	KeyBg.turn_red()
+	KeyBg.being_wrong = true;
+	for pitch in notes:
+		match pitch:
+			53: 
+				KeyBg.flowkey.show()
+				KeyBg.flowkey.texture = load("res://assets/key_guide/key_wrong.png")
+			55:
+				KeyBg.gkey.show()
+				KeyBg.gkey.texture = load("res://assets/key_guide/key_wrong.png")
+			57:
+				KeyBg.akey.show()
+				KeyBg.akey.texture = load("res://assets/key_guide/key_wrong.png")
+			59:
+				KeyBg.bkey.show()
+				KeyBg.bkey.texture = load("res://assets/key_guide/key_wrong.png")
+			60:
+				KeyBg.ckey.show()
+				KeyBg.ckey.texture = load("res://assets/key_guide/key_wrong.png")
+			62:
+				KeyBg.dkey.show()
+				KeyBg.dkey.texture = load("res://assets/key_guide/key_wrong.png")
+			64:
+				KeyBg.ekey.show()
+				KeyBg.ekey.texture = load("res://assets/key_guide/key_wrong.png")
+			65:
+				KeyBg.fkey.show()
+				KeyBg.fkey.texture = load("res://assets/key_guide/key_wrong.png")
+
+
 func show_right_notes():
 	# constantly keep notes accurate
+	if KeyBg.being_wrong:
+		return
+	
 	KeyBg.hide_all_keys()
 	if !potato_mode:
 		match current_note:
