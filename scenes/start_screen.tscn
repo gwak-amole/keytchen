@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://c2v87chub27sl" path="res://assets/start_screen/start_screen1.png" id="1_o7i0r"]
 [ext_resource type="Texture2D" uid="uid://dcj3epo7n63vj" path="res://assets/start_screen/start_screen2.png" id="2_he1sj"]
 [ext_resource type="FontFile" uid="uid://cbihm5r4u0uc7" path="res://fonts/Press_Start_2P/PressStart2P-Regular.ttf" id="4_r2jwc"]
+[ext_resource type="Texture2D" uid="uid://7olcb0p0bbyr" path="res://assets/key_tutorial/keyboard_guide.png" id="5_hm208"]
 
 [sub_resource type="Animation" id="Animation_r2jwc"]
 length = 0.001
@@ -90,6 +91,13 @@ _data = {
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hm208"]
 bg_color = Color(0.98333794, 0.00045146645, 0.9156171, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5pab1"]
+bg_color = Color(0.17103913, 0.17103916, 0.17103904, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
 [node name="start_screen" type="Control" unique_id=1442270219 node_paths=PackedStringArray("anim", "bg", "navy_rect")]
 layout_mode = 3
 anchors_preset = 15
@@ -134,3 +142,55 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.000165648, 0.012478349, 0.1580497, 1)
+
+[node name="Panel" type="Panel" parent="." unique_id=1486387211]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -442.0
+offset_top = -218.0
+offset_right = 442.0
+offset_bottom = 218.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_5pab1")
+
+[node name="TextureRect2" type="TextureRect" parent="Panel" unique_id=1253523676]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -400.0
+offset_top = -93.0
+offset_right = 400.0
+offset_bottom = 157.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_hm208")
+
+[node name="Label" type="Label" parent="Panel" unique_id=335375557]
+layout_mode = 0
+offset_left = 57.0
+offset_top = 37.0
+offset_right = 785.0
+offset_bottom = 118.0
+theme_override_fonts/font = ExtResource("4_r2jwc")
+theme_override_font_sizes/font_size = 25
+text = "Thanks for tuning into this digital experience! Here's a quick guide on controls:"
+autowrap_mode = 3
+
+[node name="Label2" type="Label" parent="Panel" unique_id=2039874674]
+layout_mode = 0
+offset_left = 66.0
+offset_top = 385.0
+offset_right = 637.0
+offset_bottom = 410.0
+theme_override_fonts/font = ExtResource("4_r2jwc")
+theme_override_font_sizes/font_size = 25
+text = "hit 'esc' to hide this"
+autowrap_mode = 3

@@ -520,6 +520,12 @@ corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mwv5v"]
+bg_color = Color(0.8213064, 0, 0.415766, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eaa65"]
+bg_color = Color(0.9098039, 0.5019608, 0.5176471, 1)
+
 [node name="cutting_board" type="Control" unique_id=772966986 node_paths=PackedStringArray("anim", "music", "carrot", "zucchini", "potato", "vegetable_container", "black_rect")]
 texture_filter = 1
 layout_mode = 3
@@ -572,12 +578,14 @@ autoplay = true
 
 [node name="exit_button" type="Button" parent="." unique_id=96165551]
 layout_mode = 0
-offset_left = 940.0
+offset_left = 896.0
 offset_top = 595.0
 offset_right = 1135.0
 offset_bottom = 643.0
 theme_override_fonts/font = ExtResource("8_mwv5v")
 theme_override_styles/normal = SubResource("StyleBoxFlat_f823b")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_mwv5v")
+theme_override_styles/hover = SubResource("StyleBoxFlat_eaa65")
 text = "Done Cutting"
 
 [node name="fade_out_canvas" type="CanvasLayer" parent="." unique_id=2033714977]
