@@ -15,6 +15,10 @@
 [ext_resource type="Texture2D" uid="uid://dpc7jxfw0m8jf" path="res://assets/main/potonstove.png" id="13_a8y0u"]
 [ext_resource type="Texture2D" uid="uid://cbqg14woe3uy0" path="res://assets/main/panonstove.png" id="14_jkv2x"]
 [ext_resource type="FontFile" uid="uid://cbihm5r4u0uc7" path="res://fonts/Press_Start_2P/PressStart2P-Regular.ttf" id="15_jkv2x"]
+[ext_resource type="AudioStream" uid="uid://88sm0w1bh7w2" path="res://audio/deawthanapon-lofi-relax-beat-loop-bpm-88-eb-major-ii-v-i-361752.mp3" id="16_jbj1t"]
+[ext_resource type="AudioStream" uid="uid://3c0lltxp0n1l" path="res://audio/floraphonic-metal-whoosh-hit-10-202176.mp3" id="17_muem4"]
+[ext_resource type="AudioStream" uid="uid://b8p48yjeau8k7" path="res://audio/dragon-studio-simple-whoosh-382724 (1).mp3" id="18_dp3eg"]
+[ext_resource type="AudioStream" uid="uid://bjp7rcpdqijc4" path="res://audio/matthewvakaliuk73627-mouse-click-290204.mp3" id="19_0ld40"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o6xl0"]
 
@@ -67,7 +71,7 @@ _data = {
 &"fade_out": SubResource("Animation_jbj1t")
 }
 
-[node name="main" type="Control" unique_id=388590618 node_paths=PackedStringArray("pot_pan_choice", "pot_choice", "pan_choice", "stove1", "stove2", "cutting_board", "pot_on_stove1", "pan_on_stove1", "pot_on_stove2", "pan_on_stove2", "navy_rect", "anim")]
+[node name="main" type="Control" unique_id=388590618 node_paths=PackedStringArray("pot_pan_choice", "pot_choice", "pan_choice", "stove1", "stove2", "cutting_board", "pot_on_stove1", "pan_on_stove1", "pot_on_stove2", "pan_on_stove2", "navy_rect", "anim", "audio_stove", "audio_stove_off", "audio_click")]
 texture_filter = 1
 layout_mode = 3
 anchors_preset = 15
@@ -88,6 +92,9 @@ pot_on_stove2 = NodePath("pot_pan_collection/pot_on_stove2")
 pan_on_stove2 = NodePath("pot_pan_collection/pan_on_stove2")
 navy_rect = NodePath("navy_rect")
 anim = NodePath("AnimationPlayer")
+audio_stove = NodePath("putonstove")
+audio_stove_off = NodePath("removestove")
+audio_click = NodePath("click")
 
 [node name="bg" type="TextureRect" parent="." unique_id=243927093]
 layout_mode = 1
@@ -279,6 +286,21 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.000165648, 0.012478349, 0.1580497, 1)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1036819230]
+stream = ExtResource("16_jbj1t")
+autoplay = true
+
+[node name="putonstove" type="AudioStreamPlayer" parent="." unique_id=1813392294]
+stream = ExtResource("17_muem4")
+volume_db = -5.0
+
+[node name="removestove" type="AudioStreamPlayer" parent="." unique_id=1447821199]
+stream = ExtResource("18_dp3eg")
+
+[node name="click" type="AudioStreamPlayer" parent="." unique_id=1204914867]
+stream = ExtResource("19_0ld40")
+volume_db = -7.79
 
 [connection signal="pressed" from="cutting board" to="." method="_on_cutting_board_pressed"]
 [connection signal="pressed" from="stovetop1" to="." method="_on_stovetop_pressed" binds= [true]]

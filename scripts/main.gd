@@ -17,6 +17,13 @@ extends Control
 # fade out animation player
 @export var anim: AnimationPlayer
 
+# put on stove audio
+@export var audio_stove: AudioStreamPlayer
+# put off stove audio
+@export var audio_stove_off: AudioStreamPlayer
+# click audio
+@export var audio_click: AudioStreamPlayer
+
 var is_stove1 = true;
 var stove1_occupied = false
 var stove2_occupied = false
@@ -48,9 +55,8 @@ func _process(delta: float) -> void:
 		else:
 			stove2.grab_focus()
 	if Input.is_action_just_pressed("ui_cancel"):
-		print("detected canacel of esc")
+		audio_stove_off.play()
 		if stove1.has_focus():
-			print("detected has focus")
 			pot_on_stove1.hide()
 			pan_on_stove1.hide()
 			stove1_occupied = false
@@ -58,15 +64,19 @@ func _process(delta: float) -> void:
 			pot_on_stove2.hide()
 			pan_on_stove2.hide()
 			stove2_occupied = false
+	if Input.is_action_just_pressed("ui_accept"):
+		audio_click.play()
 
 
 func _on_potchoice_pressed() -> void:
 	if is_stove1:
 		pot_on_stove1.show()
+		audio_stove.play()
 		stove1_occupied = true
 		stove1.grab_focus()
 	else:
 		pot_on_stove2.show()
+		audio_stove.play()
 		stove2_occupied = true
 		stove2.grab_focus()
 	pot_pan_choice.hide()
@@ -84,11 +94,13 @@ func _on_stovetop_pressed(arg: bool) -> void:
 
 func _on_panchoice_pressed() -> void:
 	if is_stove1:
+		audio_stove.play()
 		pan_on_stove1.show()
 		stove1_occupied = true
 		stove1.grab_focus()
 	else:
 		pan_on_stove2.show()
+		audio_stove.play()
 		stove2_occupied = true
 		stove2.grab_focus()
 	pot_pan_choice.hide()

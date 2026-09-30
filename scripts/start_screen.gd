@@ -6,6 +6,9 @@ extends Control
 # instructions panel
 @export var instructions: Panel
 
+# audio
+@export var audio: AudioStreamPlayer
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	instructions.hide()
@@ -13,6 +16,7 @@ func _ready() -> void:
 	navy_rect.show()
 	anim.play("open")
 	await anim.animation_finished
+	audio.play()
 	instructions.show()
 	anim.play("motion")
 	navy_rect.hide()
@@ -26,6 +30,7 @@ func _process(delta: float) -> void:
 		instructions.hide()
 
 func start_game():
+	audio.stop()
 	bg.texture = preload("res://assets/start_screen/start_screen_play.png")
 	anim.play("begin")
 	navy_rect.show()

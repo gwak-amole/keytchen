@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://dcj3epo7n63vj" path="res://assets/start_screen/start_screen2.png" id="2_he1sj"]
 [ext_resource type="FontFile" uid="uid://cbihm5r4u0uc7" path="res://fonts/Press_Start_2P/PressStart2P-Regular.ttf" id="4_r2jwc"]
 [ext_resource type="Texture2D" uid="uid://7olcb0p0bbyr" path="res://assets/key_tutorial/keyboard_guide.png" id="5_hm208"]
+[ext_resource type="AudioStream" uid="uid://cnwh32tnajtxy" path="res://audio/freesound_community-pixel-song-21-72627.mp3" id="6_5pab1"]
 
 [sub_resource type="Animation" id="Animation_r2jwc"]
 length = 0.001
@@ -98,7 +99,7 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
-[node name="start_screen" type="Control" unique_id=1442270219 node_paths=PackedStringArray("anim", "bg", "navy_rect", "instructions")]
+[node name="start_screen" type="Control" unique_id=1442270219 node_paths=PackedStringArray("anim", "bg", "navy_rect", "instructions", "audio")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -110,6 +111,7 @@ anim = NodePath("AnimationPlayer")
 bg = NodePath("TextureRect")
 navy_rect = NodePath("navy_rect")
 instructions = NodePath("Panel")
+audio = NodePath("AudioStreamPlayer")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1359134346]
 layout_mode = 1
@@ -195,3 +197,6 @@ theme_override_fonts/font = ExtResource("4_r2jwc")
 theme_override_font_sizes/font_size = 25
 text = "hit 'esc' to hide this"
 autowrap_mode = 3
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=2086043393]
+stream = ExtResource("6_5pab1")
