@@ -98,7 +98,7 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
-[node name="start_screen" type="Control" unique_id=1442270219 node_paths=PackedStringArray("anim", "bg", "navy_rect")]
+[node name="start_screen" type="Control" unique_id=1442270219 node_paths=PackedStringArray("anim", "bg", "navy_rect", "instructions")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -109,6 +109,7 @@ script = ExtResource("1_he1sj")
 anim = NodePath("AnimationPlayer")
 bg = NodePath("TextureRect")
 navy_rect = NodePath("navy_rect")
+instructions = NodePath("Panel")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1359134346]
 layout_mode = 1

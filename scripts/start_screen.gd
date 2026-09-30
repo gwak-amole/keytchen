@@ -3,12 +3,17 @@ extends Control
 @export var bg: TextureRect
 @export var navy_rect: ColorRect
 
+# instructions panel
+@export var instructions: Panel
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	instructions.hide()
 	bg.texture = preload("res://assets/start_screen/start_screen1.png")
 	navy_rect.show()
 	anim.play("open")
 	await anim.animation_finished
+	instructions.show()
 	anim.play("motion")
 	navy_rect.hide()
 
@@ -17,6 +22,8 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("ui_accept"):
 		start_game()
+	if Input.is_action_just_pressed("ui_cancel"):
+		instructions.hide()
 
 func start_game():
 	bg.texture = preload("res://assets/start_screen/start_screen_play.png")
