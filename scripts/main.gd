@@ -39,11 +39,17 @@ func _process(delta: float) -> void:
 			stove1.grab_focus()
 		else:
 			stove2.grab_focus()
-
-
-func _on_stovetop_1_pressed(arg: bool) -> void:
-	pass
-	
+	if Input.is_action_just_pressed("ui_cancel"):
+		print("detected canacel of esc")
+		if stove1.has_focus():
+			print("detected has focus")
+			pot_on_stove1.hide()
+			pan_on_stove1.hide()
+			stove1_occupied = false
+		elif stove2.has_focus():
+			pot_on_stove2.hide()
+			pan_on_stove2.hide()
+			stove2_occupied = false
 
 
 func _on_potchoice_pressed() -> void:
