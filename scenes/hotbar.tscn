@@ -1,0 +1,169 @@
+[gd_scene format=3 uid="uid://dvmfh3galxdxo"]
+
+[ext_resource type="Texture2D" uid="uid://danorvhu3g1oj" path="res://assets/hotbar/hotbar.png" id="1_4qkdb"]
+[ext_resource type="Script" uid="uid://ctxsx7lrnse7g" path="res://scripts/hotbar.gd" id="1_iapdy"]
+[ext_resource type="Texture2D" uid="uid://deukddahbx7cb" path="res://assets/hotbar/itembg.png" id="2_wceku"]
+[ext_resource type="Texture2D" uid="uid://wda0mtrqmrp0" path="res://assets/hotbar/egg.png" id="2_xrqkv"]
+[ext_resource type="Texture2D" uid="uid://ctj8r6ay1wk3a" path="res://assets/hotbar/itembg_focused.png" id="4_i62wn"]
+[ext_resource type="Texture2D" uid="uid://b43ajiu6fppms" path="res://assets/hotbar/milk.png" id="4_iapdy"]
+[ext_resource type="Texture2D" uid="uid://b2y62r0tilbyx" path="res://assets/hotbar/butter.png" id="5_i62wn"]
+[ext_resource type="Texture2D" uid="uid://bcmmw4ftf6svh" path="res://assets/hotbar/carrot.png" id="6_nekah"]
+[ext_resource type="Texture2D" uid="uid://bd28lghofhxxo" path="res://assets/hotbar/zucchini.png" id="7_70wi1"]
+[ext_resource type="Texture2D" uid="uid://dqpy7gw3gsoet" path="res://assets/hotbar/potato.png" id="8_mbjko"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2n1yv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4p213"]
+
+[node name="Hotbar" type="Control" unique_id=603933070 node_paths=PackedStringArray("items")]
+z_index = 10
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -350.0
+offset_top = -91.0
+offset_right = 350.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("1_iapdy")
+items = NodePath("Panel/HBoxContainer")
+
+[node name="bg" type="TextureRect" parent="." unique_id=1884205614]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource("1_4qkdb")
+metadata/_edit_use_anchors_ = true
+
+[node name="Panel" type="Panel" parent="." unique_id=2019562797]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_2n1yv")
+metadata/_edit_use_anchors_ = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel" unique_id=175974902]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -220.0
+offset_top = -35.0
+offset_right = 220.0
+offset_bottom = 35.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="egg" type="Panel" parent="Panel/HBoxContainer" unique_id=1578194024]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_4p213")
+
+[node name="TextureButton" type="TextureButton" parent="Panel/HBoxContainer/egg" unique_id=2080498587]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture_normal = ExtResource("2_wceku")
+texture_focused = ExtResource("4_i62wn")
+
+[node name="TextureRect" type="TextureRect" parent="Panel/HBoxContainer/egg" unique_id=264730279]
+layout_mode = 0
+offset_right = 70.0
+offset_bottom = 70.0
+texture = ExtResource("2_xrqkv")
+
+[node name="milk" type="Panel" parent="Panel/HBoxContainer" unique_id=227510496]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_4p213")
+
+[node name="TextureButton" type="TextureButton" parent="Panel/HBoxContainer/milk" unique_id=1439743929]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture_normal = ExtResource("2_wceku")
+
+[node name="TextureRect" type="TextureRect" parent="Panel/HBoxContainer/milk" unique_id=1011083884]
+layout_mode = 0
+offset_right = 70.0
+offset_bottom = 70.0
+texture = ExtResource("4_iapdy")
+
+[node name="butter" type="Panel" parent="Panel/HBoxContainer" unique_id=1876375116]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_4p213")
+
+[node name="TextureButton" type="TextureButton" parent="Panel/HBoxContainer/butter" unique_id=2052760218]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture_normal = ExtResource("2_wceku")
+
+[node name="TextureRect" type="TextureRect" parent="Panel/HBoxContainer/butter" unique_id=1950154515]
+layout_mode = 0
+offset_right = 70.0
+offset_bottom = 70.0
+texture = ExtResource("5_i62wn")
+
+[node name="carrot" type="Panel" parent="Panel/HBoxContainer" unique_id=760794432]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_4p213")
+
+[node name="TextureButton" type="TextureButton" parent="Panel/HBoxContainer/carrot" unique_id=1497563019]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture_normal = ExtResource("2_wceku")
+
+[node name="TextureRect" type="TextureRect" parent="Panel/HBoxContainer/carrot" unique_id=1179614911]
+layout_mode = 0
+offset_right = 70.0
+offset_bottom = 70.0
+texture = ExtResource("6_nekah")
+
+[node name="zucchini" type="Panel" parent="Panel/HBoxContainer" unique_id=226827801]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_4p213")
+
+[node name="TextureButton" type="TextureButton" parent="Panel/HBoxContainer/zucchini" unique_id=815258546]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture_normal = ExtResource("2_wceku")
+
+[node name="TextureRect" type="TextureRect" parent="Panel/HBoxContainer/zucchini" unique_id=1903480267]
+layout_mode = 0
+offset_right = 70.0
+offset_bottom = 70.0
+texture = ExtResource("7_70wi1")
+
+[node name="potato" type="Panel" parent="Panel/HBoxContainer" unique_id=2037641266]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_4p213")
+
+[node name="TextureButton" type="TextureButton" parent="Panel/HBoxContainer/potato" unique_id=246787406]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture_normal = ExtResource("2_wceku")
+
+[node name="TextureRect" type="TextureRect" parent="Panel/HBoxContainer/potato" unique_id=263309024]
+layout_mode = 0
+offset_right = 70.0
+offset_bottom = 70.0
+texture = ExtResource("8_mbjko")

@@ -5,6 +5,7 @@ extends Control
 @export var pan_choice: TextureButton
 @export var stove1: TextureButton
 @export var stove2: TextureButton
+@export var cutting_board: TextureButton
 @export var pot_on_stove1: TextureRect
 @export var pan_on_stove1: TextureRect
 @export var pot_on_stove2: TextureRect
@@ -13,8 +14,14 @@ var is_stove1 = true;
 var stove1_occupied = false
 var stove2_occupied = false
 
+# remembers last button before hotbar focus
+var last_focused: Control = null
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	Hotbar.go_back.connect(grab_something_focus)
+	get_viewport().gui_focus_changed.connect(gui_focus_changed)
+	
 	pot_pan_choice.hide()
 	stove1.grab_focus()
 	pot_on_stove1.hide()
@@ -75,3 +82,10 @@ func _on_panchoice_pressed() -> void:
 
 func _on_cutting_board_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/cutting_board.tscn")
+
+func grab_something_focus():
+	last_focused.grab_focus()
+
+func gui_focus_changed(node:Node):
+	if not node.get_parent() is Panel:
+		last_focused = node

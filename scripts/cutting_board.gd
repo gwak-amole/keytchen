@@ -181,13 +181,51 @@ func _input(event):
 				# if it's not potato mode or wipe time just check if note is right + timing
 				check_note(event.pitch)
 	# if i don't have my midi with me i just skip everything with this lol
-	if event.is_action_pressed("ui_accept"):
-		if potato_mode:
-			check_potato_smash([60, 64])
-		elif counter < 7:
-			check_note(pattern[counter])
-		else:
-			bypass_wipe = true
+	if event is InputEventKey:
+		if event.pressed and not event.is_echo():
+			if elapsed_time > time_allowed_between:
+				# if the time allowed between inputs is large enough just reset the array
+				recent_notes = []
+			
+			# reset the time elapsed if input is detected
+			elapsed_time = 0
+			# if the counter is larger than 7 then make time_allowed_between 0.5
+			# this is to change it to 0.5 if it's in potato mode
+			# because wipe needs to have a time_allowed_between of 0.5 :DDD
+			if counter >= 7: 
+				time_allowed_between = 0.5
+			
+			var pitch: int;
+			
+			match event.get_keycode():
+				KEY_1: pitch = 53;
+				KEY_2: pitch = 55;
+				KEY_3: pitch = 57;
+				KEY_4: pitch = 59;
+				KEY_5: pitch = 60;
+				KEY_6: pitch = 62;
+				KEY_7: pitch = 64;
+				KEY_8: pitch = 65;
+			# if the current veggie is potato add input notes to notes array
+			# and check if timing is right using the function
+			if counter >= 7:
+				print('checking wipe now')
+				recent_notes.append(pitch)
+				print(recent_notes)
+				print(wipe_pattern)
+				# if recent_notes is too crowded just get rid of the first element
+				if recent_notes.size() > 5:
+					recent_notes.remove_at(0)
+				# if the recent_notes matches the wipe_pattern then execute wipe!
+				if recent_notes == wipe_pattern:
+					wipe()
+			elif potato_mode:
+				recent_notes.append(pitch)
+				check_potato_smash(recent_notes)
+			# to determine that it's time for a wipe sequence instead
+			else:
+				# if it's not potato mode or wipe time just check if note is right + timing
+				check_note(pitch)
 
 func check_note(pitch: int):
 	# get time_error to check timing

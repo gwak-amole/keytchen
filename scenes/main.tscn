@@ -17,7 +17,7 @@
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o6xl0"]
 
-[node name="main" type="Control" unique_id=388590618 node_paths=PackedStringArray("pot_pan_choice", "pot_choice", "pan_choice", "stove1", "stove2", "pot_on_stove1", "pan_on_stove1", "pot_on_stove2", "pan_on_stove2")]
+[node name="main" type="Control" unique_id=388590618 node_paths=PackedStringArray("pot_pan_choice", "pot_choice", "pan_choice", "stove1", "stove2", "cutting_board", "pot_on_stove1", "pan_on_stove1", "pot_on_stove2", "pan_on_stove2")]
 texture_filter = 1
 layout_mode = 3
 anchors_preset = 15
@@ -31,6 +31,7 @@ pot_choice = NodePath("potpanchoicelayer/potpanchoice1/potchoice")
 pan_choice = NodePath("potpanchoicelayer/potpanchoice1/panchoice")
 stove1 = NodePath("stovetop1")
 stove2 = NodePath("stovetop2")
+cutting_board = NodePath("cutting board")
 pot_on_stove1 = NodePath("pot_pan_collection/pot_on_stove1")
 pan_on_stove1 = NodePath("pot_pan_collection/pan_on_stove1")
 pot_on_stove2 = NodePath("pot_pan_collection/pot_on_stove2")

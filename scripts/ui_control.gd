@@ -22,6 +22,8 @@ func _input(event: InputEvent) -> void:
 					ui_action("ui_right", is_pressed)
 				51: # the D# or Eb whatever
 					ui_action("ui_accept", is_pressed)
+				52: # the E
+					ui_action("e", is_pressed)
 				
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
