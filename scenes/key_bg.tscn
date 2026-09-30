@@ -5,7 +5,7 @@
 [ext_resource type="FontFile" uid="uid://cbihm5r4u0uc7" path="res://fonts/Press_Start_2P/PressStart2P-Regular.ttf" id="2_254qn"]
 [ext_resource type="Texture2D" uid="uid://dctyy1mbpb2xx" path="res://assets/key_guide/key_highlight.png" id="4_2vayj"]
 
-[node name="key_bg" type="CanvasLayer" unique_id=965582036 node_paths=PackedStringArray("label", "ckey", "dkey", "ekey", "fkey", "gkey", "akey", "bkey", "flowkey")]
+[node name="key_bg" type="CanvasLayer" unique_id=965582036 node_paths=PackedStringArray("label", "ckey", "dkey", "ekey", "fkey", "gkey", "akey", "bkey", "flowkey", "wipe_arrow")]
 script = ExtResource("1_ki2qr")
 label = NodePath("Panel/Label")
 ckey = NodePath("Panel/c")
@@ -16,6 +16,7 @@ gkey = NodePath("Panel/g")
 akey = NodePath("Panel/a")
 bkey = NodePath("Panel/b")
 flowkey = NodePath("Panel/flow")
+wipe_arrow = NodePath("Panel/wipe_arrow")
 
 [node name="Panel" type="Panel" parent="." unique_id=370610623]
 texture_filter = 1
@@ -116,3 +117,13 @@ offset_top = 528.0
 offset_right = 36.0
 offset_bottom = 648.0
 texture = ExtResource("4_2vayj")
+
+[node name="wipe_arrow" type="Label" parent="Panel" unique_id=1126536080]
+layout_mode = 0
+offset_left = 21.0
+offset_top = 582.0
+offset_right = 261.0
+offset_bottom = 605.0
+theme_override_fonts/font = ExtResource("2_254qn")
+theme_override_font_sizes/font_size = 20
+text = "<--<--<--<--"

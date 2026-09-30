@@ -9,6 +9,8 @@ extends CanvasLayer
 @export var akey: TextureRect
 @export var bkey: TextureRect
 @export var flowkey: TextureRect
+
+@export var wipe_arrow: Label
 var wipe_prompt = false
 var being_wrong = false
 
@@ -79,6 +81,7 @@ func wipeshow():
 		gkey.show()
 		akey.show()
 		bkey.show()
+		wipe_arrow.show()
 		
 func turn_red():
 	var tween = create_tween()
@@ -94,3 +97,4 @@ func hide_all_keys():
 	gkey.hide()
 	akey.hide()
 	bkey.hide()
+	wipe_arrow.hide()

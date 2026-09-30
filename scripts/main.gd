@@ -10,6 +10,13 @@ extends Control
 @export var pan_on_stove1: TextureRect
 @export var pot_on_stove2: TextureRect
 @export var pan_on_stove2: TextureRect
+
+# fade out rectangle thing
+@export var navy_rect: ColorRect
+
+# fade out animation player
+@export var anim: AnimationPlayer
+
 var is_stove1 = true;
 var stove1_occupied = false
 var stove2_occupied = false
@@ -19,6 +26,7 @@ var last_focused: Control = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	navy_rect.hide()
 	Hotbar.go_back.connect(grab_something_focus)
 	get_viewport().gui_focus_changed.connect(gui_focus_changed)
 	
@@ -95,3 +103,10 @@ func grab_something_focus():
 func gui_focus_changed(node:Node):
 	if not node.get_parent() is Panel:
 		last_focused = node
+
+
+func _on_exit_button_pressed() -> void:
+	anim.play("fade_out")
+	navy_rect.show()
+	await anim.animation_finished
+	get_tree().change_scene_to_file("res://scenes/start_screen.tscn")
