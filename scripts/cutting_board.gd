@@ -41,12 +41,18 @@ var potato_smash2: Array[int] = [64, 60]
 
 @export var vegetable_container: Node
 
+# black color_rect
+@export var black_rect: ColorRect
+
 func reset():
 	# reset the counter
 	counter = 1
 	
 	# reset all animations
 	anim.play("RESET")
+	
+	# hide black rectangle for fading out
+	black_rect.hide()
 	
 	# reset KeyBg properly (esp after wipe)
 	KeyBg.wipe_prompt = false
@@ -397,3 +403,12 @@ func get_time():
 	time -= AudioServer.get_output_latency()
 	return time
 	
+func _on_exit_button_pressed() -> void:
+	exit()
+
+func exit():
+	anim.play("fade_out")
+	KeyBg.hide()
+	black_rect.show()
+	await anim.animation_finished
+	get_tree().change_scene_to_file("res://scenes/main.tscn")
