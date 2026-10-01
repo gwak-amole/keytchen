@@ -100,6 +100,9 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("ui_cancel"):
+		exit()
+	
 	show_right_notes()
 	
 	# finding the current time each process frame
@@ -152,7 +155,9 @@ func _process(delta: float) -> void:
 func _input(event):
 	if bypass_wipe:
 		wipe()
+	print("detect input")
 	if event is InputEventMIDI:
+		print("detected midi")
 		if event.message == MIDI_MESSAGE_NOTE_ON:
 			if elapsed_time > time_allowed_between:
 				# if the time allowed between inputs is large enough just reset the array
@@ -188,9 +193,8 @@ func _input(event):
 				check_note(event.pitch)
 	# if i don't have my midi with me i just skip everything with this lol
 	if event is InputEventKey:
+		print("detected key")
 		if event.pressed and not event.is_echo():
-			if event.keycode == KEY_ESCAPE:
-				exit();
 			if elapsed_time > time_allowed_between:
 				# if the time allowed between inputs is large enough just reset the array
 				recent_notes = []
