@@ -12,5 +12,6 @@ I've made a map of the keys you'll use in this game, regardless if you're on a n
 - Godot 4.6.2 stable
 - Aseprite (all handdrawn by me! except for this nanoKEY2 base image above lol)
 - Pixabay for audio/sfx!
+<br>
 Thanks so much for checking this digital experience out! It really means a lot!
 I've submitted this for Hack Club's Stardance :)
